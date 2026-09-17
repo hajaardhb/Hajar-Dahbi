@@ -20,7 +20,7 @@ $modules = [
         "ateliers" => [
             [
                 "title" => "Atelier 1 - Analyse du projet",
-                "file" => "docs/Dahbi_Hajar_Atelier_UML.pdf"
+                "file" => "docs/Dahbi_Hajar_Atelier_UML_Immobilier.pdf"
             ],
             [
                 "title" => "Atelier 2 - Cahier des charges",
