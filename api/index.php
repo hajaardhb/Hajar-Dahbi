@@ -42,6 +42,33 @@ $modules = [
         "description" => "Réalisation d'un projet complet regroupant les compétences acquises durant la formation."
     ]
 ];
+
+// =====================================================
+// ATELIERS (NOUVELLE SECTION)
+// =====================================================
+$ateliers = [
+    [
+        "titre" => "Atelier UI/UX Design",
+        "description" => "Initiation aux principes de design d'interface et d'expérience utilisateur pour créer des maquettes efficaces.",
+        "duree" => "3 jours"
+    ],
+    [
+        "titre" => "Atelier Sécurité Web",
+        "description" => "Bonnes pratiques de sécurisation des applications web : failles XSS, injections SQL, gestion des sessions.",
+        "duree" => "2 jours"
+    ],
+    [
+        "titre" => "Atelier DevOps & Cloud",
+        "description" => "Introduction à l'intégration continue, au déploiement automatisé et aux conteneurs (Docker).",
+        "duree" => "2 jours"
+    ],
+    [
+        "titre" => "Atelier Travail en Équipe",
+        "description" => "Mise en pratique du travail collaboratif avec Git, GitHub et la méthode Agile/Scrum sur un projet commun.",
+        "duree" => "1 jour"
+    ]
+];
+
 // Traitement du formulaire
 $messageEnvoye = false;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -386,6 +413,50 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             font-size: 12px;
         }
         /* =====================================================
+           ATELIERS (NOUVELLE SECTION)
+        ===================================================== */
+        #ateliers {
+            background: #ffffff;
+        }
+        .ateliers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+        .atelier-card {
+            background: var(--rose-clair);
+            padding: 28px;
+            border-radius: 10px;
+            border: 1px solid var(--beige);
+            transition: 0.3s;
+            position: relative;
+        }
+        .atelier-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--vert);
+            box-shadow:
+                0 10px 30px
+                rgba(176,196,177,0.30);
+        }
+        .atelier-duree {
+            display: inline-block;
+            background: var(--vert);
+            color: var(--texte);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+        .atelier-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .atelier-card p {
+            color: #686965;
+            font-size: 14px;
+        }
+        /* =====================================================
            CONTACT
         ===================================================== */
         .contact-form {
@@ -455,6 +526,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             .modules {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .ateliers-grid {
+                grid-template-columns: 1fr;
+            }
             .about {
                 grid-template-columns: 1fr;
             }
@@ -509,6 +583,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </li>
             <li>
                 <a href="#projets">Projets</a>
+            </li>
+            <li>
+                <a href="#ateliers">Ateliers</a>
             </li>
             <li>
                 <a href="#contact">Contact</a>
@@ -775,6 +852,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 </section>
 <!-- =====================================================
+     ATELIERS (NOUVELLE SECTION)
+===================================================== -->
+<section id="ateliers">
+    <div class="container">
+        <div class="section-title">
+            <p>FORMATION COMPLÉMENTAIRE</p>
+            <h2>Ateliers</h2>
+        </div>
+        <div class="ateliers-grid">
+            <?php foreach ($ateliers as $atelier): ?>
+                <article class="atelier-card">
+                    <div class="atelier-duree">
+                        <?= htmlspecialchars($atelier["duree"]) ?>
+                    </div>
+                    <h3>
+                        <?= htmlspecialchars($atelier["titre"]) ?>
+                    </h3>
+                    <p>
+                        <?= htmlspecialchars($atelier["description"]) ?>
+                    </p>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<!-- =====================================================
      CONTACT
 ===================================================== -->
 <section id="contact">
@@ -844,7 +947,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // PETIT EFFET AU DÉFILEMENT
     // =====================================================
     const cards = document.querySelectorAll(
-        ".module-card, .project"
+        ".module-card, .project, .atelier-card"
     );
     const observer = new IntersectionObserver(
         (entries) => {
