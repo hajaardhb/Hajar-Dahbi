@@ -62,22 +62,29 @@ $competences = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Portfolio professionnel de Hajar Dahbi, développeur web full stack">
+          content="Portfolio professionnel de Hajar Dahbi">
 
     <title><?= htmlspecialchars($nom); ?> - Portfolio</title>
 
     <style>
         :root {
-            --dark: #0f172a;
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #dbeafe;
-            --text: #334155;
-            --muted: #64748b;
+            --dark: #3f3a3a;
+            --dark-light: #5c5555;
+
+            --primary: #b0c4b1;
+            --primary-dark: #8fa993;
+            --primary-light: #edafb8;
+
+            --beige: #f7e1d7;
+            --gray-beige: #dedbd2;
+
+            --text: #514949;
+            --muted: #766f6f;
             --white: #ffffff;
-            --background: #f8fafc;
-            --border: #e2e8f0;
-            --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            --background: #f7e1d7;
+            --border: #dedbd2;
+
+            --shadow: 0 10px 30px rgba(63, 58, 58, 0.12);
         }
 
         * {
@@ -132,7 +139,7 @@ $competences = [
         }
 
         .logo span {
-            color: var(--primary);
+            color: var(--primary-dark);
         }
 
         .nav-links {
@@ -148,14 +155,18 @@ $competences = [
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--primary-dark);
         }
 
-        /* Section accueil */
+        /* Accueil */
 
         .hero {
             padding: 110px 0;
-            background: linear-gradient(135deg, #eff6ff, #ffffff);
+            background: linear-gradient(
+                135deg,
+                var(--beige),
+                var(--white)
+            );
         }
 
         .hero-content {
@@ -172,7 +183,7 @@ $competences = [
         .subtitle,
         .section-label {
             margin-bottom: 12px;
-            color: var(--primary);
+            color: var(--primary-dark);
             font-size: 0.85rem;
             font-weight: bold;
             letter-spacing: 1.5px;
@@ -186,7 +197,7 @@ $competences = [
 
         .hero h2 {
             margin-bottom: 20px;
-            color: var(--primary);
+            color: var(--primary-dark);
             font-size: 1.5rem;
             font-weight: normal;
         }
@@ -211,7 +222,7 @@ $competences = [
         }
 
         .btn-primary {
-            color: var(--white);
+            color: var(--dark);
             background: var(--primary);
         }
 
@@ -247,7 +258,7 @@ $competences = [
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            color: var(--primary);
+            color: var(--dark);
             background: var(--primary-light);
             border-radius: 50%;
             font-size: 2rem;
@@ -259,7 +270,7 @@ $competences = [
         }
 
         .hero-card p {
-            color: #cbd5e1;
+            color: var(--gray-beige);
         }
 
         /* Sections */
@@ -318,7 +329,7 @@ $competences = [
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+            box-shadow: 0 5px 20px rgba(63, 58, 58, 0.06);
             transition: 0.3s;
         }
 
@@ -332,7 +343,7 @@ $competences = [
             display: inline-block;
             margin-bottom: 18px;
             padding: 6px 12px;
-            color: var(--primary);
+            color: var(--dark);
             background: var(--primary-light);
             border-radius: 5px;
             font-size: 0.85rem;
@@ -352,7 +363,7 @@ $competences = [
         }
 
         .module-link {
-            color: var(--primary);
+            color: var(--primary-dark);
             font-size: 0.9rem;
             font-weight: bold;
         }
@@ -371,7 +382,7 @@ $competences = [
         .skill {
             padding: 12px 20px;
             color: var(--dark);
-            background: var(--primary-light);
+            background: var(--gray-beige);
             border-radius: 30px;
             font-size: 0.95rem;
             font-weight: bold;
@@ -389,7 +400,7 @@ $competences = [
         }
 
         .contact-section .section-label {
-            color: #60a5fa;
+            color: var(--primary-light);
         }
 
         .contact-content {
@@ -400,7 +411,7 @@ $competences = [
         }
 
         .contact-content p {
-            color: #cbd5e1;
+            color: var(--gray-beige);
         }
 
         .contact-info {
@@ -411,7 +422,7 @@ $competences = [
         }
 
         .contact-link {
-            color: #93c5fd;
+            color: var(--primary-light);
             transition: 0.3s;
         }
 
@@ -423,8 +434,8 @@ $competences = [
 
         footer {
             padding: 25px 0;
-            color: #94a3b8;
-            background: #020617;
+            color: var(--gray-beige);
+            background: #302c2c;
             font-size: 0.85rem;
         }
 
