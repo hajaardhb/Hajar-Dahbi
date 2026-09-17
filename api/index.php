@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html>i
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
            PALETTE
         ===================================================== */
         :root {
-            --rose: #EDAFB8;
+            --rose: #ff0026;
             --rose-clair: #F7E1D7;
             --beige: #DEDBD2;
             --vert: #B0C4B1;
