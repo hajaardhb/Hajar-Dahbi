@@ -1,82 +1,120 @@
 <?php
-// =====================================================
-// PORTFOLIO DE DÉVELOPPEUR WEB - FICHIER UNIQUE
-// =====================================================
 $nom = "Dahbi";
 $prenom = "Hajar";
 $metier = "Développeur Web";
+/*
+|--------------------------------------------------------------------------
+| MODULES + ATELIERS
+|--------------------------------------------------------------------------
+| Pour ajouter un atelier :
+|
+| 1. Mets le PDF dans le dossier correspondant.
+| 2. Ajoute son nom et son chemin ici.
+|
+*/
 $modules = [
     [
         "code" => "M201",
         "title" => "Préparation d'un projet web",
-        "description" => "Analyse des besoins, cahier des charges, conception et organisation d'un projet web."
+        "description" => "Analyse des besoins, cahier des charges, conception et organisation d'un projet web.",
+        "ateliers" => [
+            [
+                "title" => "Atelier 1 - Analyse du projet",
+                "file" => "pdf/M201/atelier1.pdf"
+            ],
+            [
+                "title" => "Atelier 2 - Cahier des charges",
+                "file" => "pdf/M201/atelier2.pdf"
+            ]
+        ]
     ],
     [
         "code" => "M202",
-        "title" => "Approche agile",
-        "description" => "Découverte de la méthode Agile, Scrum, gestion des tâches et travail collaboratif."
+        "title" => "Développement Front-End",
+        "description" => "Création d'interfaces web avec HTML, CSS et JavaScript.",
+        "ateliers" => [
+            [
+                "title" => "Atelier 1 - HTML & CSS",
+                "file" => "pdf/M202/atelier1.pdf"
+            ],
+            [
+                "title" => "Atelier 2 - JavaScript",
+                "file" => "pdf/M202/atelier2.pdf"
+            ]
+        ]
     ],
     [
         "code" => "M203",
-        "title" => "Gestion des données",
-        "description" => "Conception, manipulation et gestion des bases de données avec SQL et MySQL."
+        "title" => "Développement Back-End",
+        "description" => "Développement des fonctionnalités côté serveur et gestion des données.",
+        "ateliers" => [
+            [
+                "title" => "Atelier 1 - PHP",
+                "file" => "pdf/M203/atelier1.pdf"
+            ]
+        ]
     ],
     [
         "code" => "M204",
-        "title" => "Développement front-end",
-        "description" => "Création d'interfaces modernes et responsives avec HTML, CSS et JavaScript."
+        "title" => "Bases de données",
+        "description" => "Conception, organisation et manipulation des bases de données.",
+        "ateliers" => [
+            [
+                "title" => "Atelier 1 - SQL",
+                "file" => "pdf/M204/atelier1.pdf"
+            ]
+        ]
     ],
     [
         "code" => "M205",
-        "title" => "Développement back-end",
-        "description" => "Développement côté serveur avec PHP, gestion des formulaires, sessions et données."
+        "title" => "Développement Web",
+        "description" => "Mise en pratique des technologies et outils du développement web.",
+        "ateliers" => [
+            [
+                "title" => "Atelier 1",
+                "file" => "pdf/M205/atelier1.pdf"
+            ]
+        ]
     ],
     [
         "code" => "M206",
-        "title" => "Création d'une application Cloud native",
-        "description" => "Découverte des architectures Cloud native, conteneurs et déploiement d'applications."
+        "title" => "Projet de synthèse",
+        "description" => "Réalisation d'un projet web complet en utilisant les compétences acquises.",
+        "ateliers" => [
+            [
+                "title" => "Atelier 1",
+                "file" => "pdf/M206/atelier1.pdf"
+            ]
+        ]
     ],
     [
         "code" => "M207",
-        "title" => "Projet de synthèse",
-        "description" => "Réalisation d'un projet complet regroupant les compétences acquises durant la formation."
+        "title" => "Communication professionnelle",
+        "description" => "Communication, présentation et préparation à l'insertion professionnelle.",
+        "ateliers" => [
+            [
+                "title" => "Atelier 1",
+                "file" => "pdf/M207/atelier1.pdf"
+            ]
+        ]
     ]
 ];
-
-// =====================================================
-// ATELIERS (NOUVELLE SECTION)
-// =====================================================
-$ateliers = [
-    [
-        "titre" => "Atelier UI/UX Design",
-        "description" => "Initiation aux principes de design d'interface et d'expérience utilisateur pour créer des maquettes efficaces.",
-        "duree" => "3 jours"
-    ],
-    [
-        "titre" => "Atelier Sécurité Web",
-        "description" => "Bonnes pratiques de sécurisation des applications web : failles XSS, injections SQL, gestion des sessions.",
-        "duree" => "2 jours"
-    ],
-    [
-        "titre" => "Atelier DevOps & Cloud",
-        "description" => "Introduction à l'intégration continue, au déploiement automatisé et aux conteneurs (Docker).",
-        "duree" => "2 jours"
-    ],
-    [
-        "titre" => "Atelier Travail en Équipe",
-        "description" => "Mise en pratique du travail collaboratif avec Git, GitHub et la méthode Agile/Scrum sur un projet commun.",
-        "duree" => "1 jour"
-    ]
-];
-
-// Traitement du formulaire
-$messageEnvoye = false;
+/*
+|--------------------------------------------------------------------------
+| FORMULAIRE DE CONTACT
+|--------------------------------------------------------------------------
+*/
+$message_envoye = false;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nomContact = htmlspecialchars($_POST["nom"] ?? "");
-    $email = htmlspecialchars($_POST["email"] ?? "");
-    $message = htmlspecialchars($_POST["message"] ?? "");
-    if (!empty($nomContact) && !empty($email) && !empty($message)) {
-        $messageEnvoye = true;
+    $nom_contact = htmlspecialchars($_POST["nom"] ?? "");
+    $email_contact = htmlspecialchars($_POST["email"] ?? "");
+    $message_contact = htmlspecialchars($_POST["message"] ?? "");
+    if (
+        !empty($nom_contact) &&
+        !empty($email_contact) &&
+        !empty($message_contact)
+    ) {
+        $message_envoye = true;
     }
 }
 ?>
@@ -84,15 +122,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $prenom ?> <?= $nom ?> | Portfolio Développeur Web
+        Portfolio - <?= htmlspecialchars($prenom . " " . $nom) ?>
     </title>
     <style>
-        /* =====================================================
-           PALETTE
-        ===================================================== */
+        /* ==============================
+           VARIABLES
+        ============================== */
         :root {
             --rose: #EDAFB8;
             --rose-clair: #F7E1D7;
@@ -101,9 +138,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             --texte: #3f403d;
             --blanc: #ffffff;
         }
-        /* =====================================================
+        /* ==============================
            RESET
-        ===================================================== */
+        ============================== */
         * {
             margin: 0;
             padding: 0;
@@ -118,63 +155,51 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             color: var(--texte);
             line-height: 1.6;
         }
-        a {
-            text-decoration: none;
-        }
-        /* =====================================================
-           HEADER
-        ===================================================== */
-        header {
+        /* ==============================
+           NAVBAR
+        ============================== */
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 70px;
-            background: rgba(255,255,255,0.96);
-            border-bottom: 1px solid var(--beige);
-            z-index: 1000;
-        }
-        nav {
-            max-width: 1150px;
-            height: 70px;
-            margin: auto;
+            background: rgba(255, 255, 255, 0.95);
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 0 20px;
+            align-items: center;
+            padding: 18px 8%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--beige);
         }
         .logo {
-            font-size: 23px;
+            font-size: 24px;
             font-weight: bold;
-            color: var(--texte);
-        }
-        .logo span {
             color: var(--rose);
         }
-        .nav-links {
-            display: flex;
-            gap: 25px;
+        nav ul {
             list-style: none;
+            display: flex;
+            gap: 30px;
         }
-        .nav-links a {
+        nav ul li a {
+            text-decoration: none;
             color: var(--texte);
-            font-size: 14px;
             font-weight: 500;
             transition: 0.3s;
         }
-        .nav-links a:hover {
+        nav ul li a:hover {
             color: var(--rose);
         }
-        /* =====================================================
+        /* ==============================
            HERO
-        ===================================================== */
+        ============================== */
         .hero {
             min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 120px 20px 80px;
             background:
                 linear-gradient(
                     135deg,
@@ -184,284 +209,190 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 );
         }
         .hero-content {
-            max-width: 850px;
-        }
-        .hero-small {
-            color: var(--rose);
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
+            max-width: 800px;
         }
         .hero h1 {
-            font-size: clamp(42px, 7vw, 72px);
-            line-height: 1.1;
-            margin-bottom: 25px;
+            font-size: 55px;
+            margin-bottom: 20px;
         }
         .hero h1 span {
             color: var(--rose);
         }
-        .hero p {
-            color: #686965;
-            font-size: 18px;
-            max-width: 650px;
-            margin: auto;
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
-        .buttons {
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
         }
         .btn {
             display: inline-block;
-            padding: 13px 24px;
-            border-radius: 7px;
-            font-size: 14px;
-            font-weight: bold;
+            padding: 12px 25px;
+            background: var(--rose);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
             transition: 0.3s;
         }
-        .btn-primary {
-            background: var(--rose);
-            color: var(--texte);
-        }
-        .btn-primary:hover {
-            background: var(--rose-clair);
+        .btn:hover {
+            background: var(--vert);
             transform: translateY(-2px);
         }
-        .btn-secondary {
-            color: var(--texte);
-            background: white;
-            border: 1px solid var(--rose);
-        }
-        .btn-secondary:hover {
-            background: var(--rose-clair);
-        }
-        /* =====================================================
+        /* ==============================
            SECTIONS
-        ===================================================== */
+        ============================== */
         section {
-            padding: 100px 20px;
+            padding: 90px 8%;
             background: #ffffff;
-        }
-        .container {
-            max-width: 1150px;
-            margin: auto;
         }
         .section-title {
             text-align: center;
-            margin-bottom: 55px;
-        }
-        .section-title p {
-            color: var(--rose);
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 2px;
+            margin-bottom: 50px;
         }
         .section-title h2 {
-            font-size: 36px;
-            margin-top: 8px;
+            font-size: 35px;
+            margin-bottom: 10px;
         }
-        /* =====================================================
+        .section-title p {
+            color: #777;
+        }
+        /* ==============================
            ABOUT
-        ===================================================== */
+        ============================== */
         .about {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 60px;
-            align-items: center;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
         }
-        .profile {
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--vert);
-            border-radius: 15px;
-            color: var(--texte);
-            font-size: 90px;
-        }
-        .about-text h3 {
-            font-size: 28px;
+        .about p {
+            font-size: 17px;
             margin-bottom: 15px;
         }
-        .about-text p {
-            color: #686965;
-            margin-bottom: 15px;
-        }
-        .info {
-            margin-top: 25px;
-        }
-        .info p {
-            margin-bottom: 8px;
-        }
-        /* =====================================================
+        /* ==============================
            MODULES
-        ===================================================== */
-        #modules {
+        ============================== */
+        .modules {
             background: var(--rose-clair);
         }
-        .modules {
+        .modules-container {
+            max-width: 1200px;
+            margin: auto;
             display: grid;
             grid-template-columns:
-                repeat(3, 1fr);
-            gap: 22px;
+                repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
         .module-card {
             background: white;
-            padding: 28px;
-            border-radius: 10px;
-            border: 1px solid var(--beige);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.05);
             transition: 0.3s;
         }
         .module-card:hover {
             transform: translateY(-5px);
-            border-color: var(--rose);
-            box-shadow:
-                0 10px 30px
-                rgba(237,175,184,0.25);
         }
         .module-code {
             display: inline-block;
-            background: var(--rose-clair);
-            color: var(--texte);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 18px;
-        }
-        .module-card h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
-        .module-card p {
-            color: #686965;
-            font-size: 14px;
-        }
-        /* =====================================================
-           COMPÉTENCES
-        ===================================================== */
-        .skills {
-            max-width: 800px;
-            margin: auto;
-        }
-        .skill {
-            margin-bottom: 25px;
-        }
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        .progress {
-            height: 8px;
-            background: var(--beige);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .progress-bar {
-            height: 100%;
             background: var(--vert);
-            border-radius: 10px;
-        }
-        /* =====================================================
-           PROJETS
-        ===================================================== */
-        #projets {
-            background: var(--rose-clair);
-        }
-        .projects {
-            max-width: 900px;
-            margin: auto;
-        }
-        .project {
-            display: grid;
-            grid-template-columns: 70px 1fr;
-            gap: 25px;
-            background: white;
-            padding: 30px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            border: 1px solid var(--beige);
-        }
-        .project-number {
-            font-size: 30px;
-            font-weight: bold;
-            color: var(--rose);
-        }
-        .project h3 {
-            margin-bottom: 8px;
-        }
-        .project p {
-            color: #686965;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
             margin-bottom: 15px;
         }
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+        .module-card h3 {
+            margin-bottom: 10px;
+            font-size: 21px;
         }
-        .tags span {
-            padding: 4px 9px;
+        .module-card p {
+            color: #666;
+        }
+        /* ==============================
+           ATELIERS
+        ============================== */
+        .ateliers {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--beige);
+        }
+        .ateliers h4 {
+            margin-bottom: 12px;
+            font-size: 17px;
+        }
+        .atelier-btn {
+            display: block;
+            margin-bottom: 8px;
+            padding: 10px 14px;
             background: var(--rose-clair);
             color: var(--texte);
-            border-radius: 4px;
-            font-size: 12px;
-        }
-        /* =====================================================
-           ATELIERS (NOUVELLE SECTION)
-        ===================================================== */
-        #ateliers {
-            background: #ffffff;
-        }
-        .ateliers-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
-        }
-        .atelier-card {
-            background: var(--rose-clair);
-            padding: 28px;
+            text-decoration: none;
             border-radius: 10px;
-            border: 1px solid var(--beige);
             transition: 0.3s;
-            position: relative;
         }
-        .atelier-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--vert);
-            box-shadow:
-                0 10px 30px
-                rgba(176,196,177,0.30);
+        .atelier-btn:hover {
+            background: var(--rose);
+            transform: translateY(-2px);
         }
-        .atelier-duree {
-            display: inline-block;
-            background: var(--vert);
-            color: var(--texte);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
+        /* ==============================
+           COMPETENCES
+        ============================== */
+        .skills-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .skill {
+            background: var(--beige);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
             font-weight: bold;
-            margin-bottom: 18px;
         }
-        .atelier-card h3 {
-            font-size: 18px;
+        .skill:nth-child(even) {
+            background: var(--vert);
+        }
+        /* ==============================
+           PROJETS
+        ============================== */
+        .projects {
+            background: var(--rose-clair);
+        }
+        .projects-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .project-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        .project-card h3 {
             margin-bottom: 12px;
         }
-        .atelier-card p {
-            color: #686965;
-            font-size: 14px;
+        .project-card p {
+            color: #666;
+            margin-bottom: 20px;
         }
-        /* =====================================================
+        /* ==============================
            CONTACT
-        ===================================================== */
-        .contact-form {
+        ============================== */
+        .contact-container {
             max-width: 700px;
             margin: auto;
+        }
+        .contact-form {
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -469,9 +400,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 15px;
+            padding: 14px;
             border: 1px solid var(--beige);
-            border-radius: 7px;
+            border-radius: 10px;
             font-family: inherit;
             outline: none;
         }
@@ -479,423 +410,289 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .contact-form textarea:focus {
             border-color: var(--rose);
         }
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
         .contact-form button {
-            width: fit-content;
             border: none;
+            padding: 14px;
+            background: var(--rose);
+            color: white;
+            border-radius: 25px;
             cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
         }
-        .success {
-            max-width: 700px;
-            margin: 0 auto 20px;
+        .contact-form button:hover {
+            background: var(--vert);
+        }
+        .success-message {
+            background: var(--vert);
             padding: 15px;
-            background: var(--vert);
-            color: var(--texte);
-            border-radius: 7px;
+            border-radius: 10px;
+            margin-bottom: 20px;
             text-align: center;
         }
-        /* =====================================================
+        /* ==============================
            FOOTER
-        ===================================================== */
+        ============================== */
         footer {
-            background: var(--vert);
-            color: var(--texte);
+            background: var(--beige);
             text-align: center;
-            padding: 30px 20px;
+            padding: 25px;
+            margin-top: 0;
         }
-        footer p {
-            font-size: 14px;
-        }
-        .socials {
-            margin-top: 10px;
-        }
-        .socials a {
-            color: var(--texte);
-            margin: 0 10px;
-            font-size: 14px;
-        }
-        .socials a:hover {
-            color: var(--rose);
-        }
-        /* =====================================================
+        /* ==============================
            RESPONSIVE
-        ===================================================== */
-        @media (max-width: 900px) {
-            .nav-links {
-                display: none;
+        ============================== */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
             }
-            .modules {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .ateliers-grid {
-                grid-template-columns: 1fr;
-            }
-            .about {
-                grid-template-columns: 1fr;
-            }
-            .profile {
-                max-width: 300px;
-                margin: auto;
-            }
-        }
-        @media (max-width: 600px) {
-            section {
-                padding: 70px 20px;
-            }
-            .modules {
-                grid-template-columns: 1fr;
-            }
-            .project {
-                grid-template-columns: 1fr;
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             .hero h1 {
-                font-size: 42px;
+                font-size: 40px;
             }
-            .hero p {
-                font-size: 16px;
+            .hero h2 {
+                font-size: 23px;
             }
-            .section-title h2 {
-                font-size: 30px;
+            section {
+                padding: 70px 5%;
             }
         }
     </style>
 </head>
 <body>
-<!-- =====================================================
+<!-- ==============================
      NAVIGATION
-===================================================== -->
-<header>
-    <nav>
-        <div class="logo">
-            <?= $prenom ?><span></span>
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="#accueil">Accueil</a>
-            </li>
-            <li>
-                <a href="#apropos">À propos</a>
-            </li>
-            <li>
-                <a href="#modules">Modules</a>
-            </li>
-            <li>
-                <a href="#competences">Compétences</a>
-            </li>
-            <li>
-                <a href="#projets">Projets</a>
-            </li>
-            <li>
-                <a href="#ateliers">Ateliers</a>
-            </li>
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<!-- =====================================================
+============================== -->
+<nav>
+    <div class="logo">
+        Hajar Dahbi
+    </div>
+    <ul>
+        <li>
+            <a href="#accueil">Accueil</a>
+        </li>
+        <li>
+            <a href="#apropos">À propos</a>
+        </li>
+        <li>
+            <a href="#modules">Modules</a>
+        </li>
+        <li>
+            <a href="#competences">Compétences</a>
+        </li>
+        <li>
+            <a href="#projets">Projets</a>
+        </li>
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+    </ul>
+</nav>
+<!-- ==============================
      ACCUEIL
-===================================================== -->
-<section id="accueil" class="hero">
+============================== -->
+<section class="hero" id="accueil">
     <div class="hero-content">
-        <div class="hero-small">
-            PORTFOLIO DE DÉVELOPPEUR WEB
-        </div>
         <h1>
             Bonjour, je suis
-            <span><?= $prenom ?></span>
+            <span>Hajar Dahbi</span>
         </h1>
+        <h2>
+            Développeur Web
+        </h2>
         <p>
-            <?= $metier ?> passionné par la création
-            d'applications web modernes, simples et performantes.
+            Bienvenue sur mon portfolio.
+            Découvrez mon parcours, mes compétences,
+            mes modules, mes ateliers et mes projets.
         </p>
-        <div class="buttons">
-            <a href="#modules"
-               class="btn btn-primary">
-                Découvrir ma formation
-            </a>
-            <a href="#contact"
-               class="btn btn-secondary">
-                Me contacter
-            </a>
-        </div>
+        <a href="#modules" class="btn">
+            Découvrir mes modules
+        </a>
     </div>
 </section>
-<!-- =====================================================
+<!-- ==============================
      À PROPOS
-===================================================== -->
+============================== -->
 <section id="apropos">
-    <div class="container">
-        <div class="section-title">
-            <p>MON PROFIL</p>
-            <h2>À propos de moi</h2>
-        </div>
-        <div class="about">
-            <div class="profile">
-                &lt;/&gt;
-            </div>
-            <div class="about-text">
-                <h3><?= $prenom ?> <?= $nom ?></h3>
-                <p>
-                    Je suis un développeur web en formation,
-                    intéressé par la conception et le développement
-                    d'applications web modernes.
-                </p>
-                <p>
-                    Durant ma formation, j'ai développé des compétences
-                    en front-end, back-end, bases de données, méthodes
-                    agiles et technologies Cloud.
-                </p>
-                <div class="info">
-                    <p>
-                        <strong>Formation :</strong>
-                        Développement Digital
-                    </p>
-                    <p>
-                        <strong>Spécialité :</strong>
-                        Développement Web
-                    </p>
-                    <p>
-                        <strong>Technologies :</strong>
-                        HTML, CSS, JavaScript, PHP, MySQL
-                    </p>
+    <div class="section-title">
+        <h2>À propos de moi</h2>
+        <p>
+            Découvrez mon parcours et mes objectifs.
+        </p>
+    </div>
+    <div class="about">
+        <p>
+            Je suis Hajar Dahbi, étudiante en développement web.
+            Je m'intéresse à la création de sites web modernes,
+            simples et interactifs.
+        </p>
+        <p>
+            À travers ma formation, je développe mes compétences
+            en développement Front-End, Back-End, bases de données
+            et gestion de projets web.
+        </p>
+    </div>
+</section>
+<!-- ==============================
+     MODULES
+============================== -->
+<section class="modules" id="modules">
+    <div class="section-title">
+        <h2>Mes Modules</h2>
+        <p>
+            Retrouvez mes modules et les ateliers réalisés
+            pendant ma formation.
+        </p>
+    </div>
+    <div class="modules-container">
+        <?php foreach ($modules as $module): ?>
+            <article class="module-card">
+                <div class="module-code">
+                    <?= htmlspecialchars($module["code"]) ?>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- =====================================================
-     MODULES M201 - M207
-===================================================== -->
-<section id="modules">
-    <div class="container">
-        <div class="section-title">
-            <p>MA FORMATION</p>
-            <h2>Modules M201 à M207</h2>
-        </div>
-        <div class="modules">
-            <?php foreach ($modules as $module): ?>
-                <article class="module-card">
-                    <div class="module-code">
-                        <?= htmlspecialchars($module["code"]) ?>
+                <h3>
+                    <?= htmlspecialchars($module["title"]) ?>
+                </h3>
+                <p>
+                    <?= htmlspecialchars($module["description"]) ?>
+                </p>
+                <?php if (!empty($module["ateliers"])): ?>
+                    <div class="ateliers">
+                        <h4>
+                            📚 Ateliers
+                        </h4>
+                        <?php foreach ($module["ateliers"] as $atelier): ?>
+                            <a
+                                href="<?= htmlspecialchars($atelier["file"]) ?>"
+                                target="_blank"
+                                class="atelier-btn"
+                            >
+                                📄
+                                <?= htmlspecialchars($atelier["title"]) ?>
+                            </a>
+                        <?php endforeach; ?>
                     </div>
-                    <h3>
-                        <?= htmlspecialchars($module["title"]) ?>
-                    </h3>
-                    <p>
-                        <?= htmlspecialchars($module["description"]) ?>
-                    </p>
-                </article>
-            <?php endforeach; ?>
-        </div>
+                <?php endif; ?>
+            </article>
+        <?php endforeach; ?>
     </div>
 </section>
-<!-- =====================================================
+<!-- ==============================
      COMPÉTENCES
-===================================================== -->
+============================== -->
 <section id="competences">
-    <div class="container">
-        <div class="section-title">
-            <p>MES TECHNOLOGIES</p>
-            <h2>Compétences</h2>
+    <div class="section-title">
+        <h2>Mes Compétences</h2>
+        <p>
+            Les technologies et compétences que j'utilise.
+        </p>
+    </div>
+    <div class="skills-container">
+        <div class="skill">
+            HTML
         </div>
-        <div class="skills">
-            <div class="skill">
-                <div class="skill-header">
-                    <span>HTML / CSS</span>
-                    <span>90%</span>
-                </div>
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:90%">
-                    </div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-header">
-                    <span>JavaScript</span>
-                    <span>80%</span>
-                </div>
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:80%">
-                    </div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-header">
-                    <span>PHP</span>
-                    <span>85%</span>
-                </div>
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:85%">
-                    </div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-header">
-                    <span>MySQL</span>
-                    <span>80%</span>
-                </div>
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:80%">
-                    </div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-header">
-                    <span>Git / GitHub</span>
-                    <span>75%</span>
-                </div>
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:75%">
-                    </div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-header">
-                    <span>Cloud</span>
-                    <span>70%</span>
-                </div>
-                <div class="progress">
-                    <div
-                        class="progress-bar"
-                        style="width:70%">
-                    </div>
-                </div>
-            </div>
+        <div class="skill">
+            CSS
+        </div>
+        <div class="skill">
+            JavaScript
+        </div>
+        <div class="skill">
+            PHP
+        </div>
+        <div class="skill">
+            MySQL
+        </div>
+        <div class="skill">
+            Git / GitHub
+        </div>
+        <div class="skill">
+            UML
+        </div>
+        <div class="skill">
+            Conception Web
         </div>
     </div>
 </section>
-<!-- =====================================================
+<!-- ==============================
      PROJETS
-===================================================== -->
-<section id="projets">
-    <div class="container">
-        <div class="section-title">
-            <p>MES RÉALISATIONS</p>
-            <h2>Projets</h2>
-        </div>
-        <div class="projects">
-            <article class="project">
-                <div class="project-number">
-                    01
-                </div>
-                <div>
-                    <h3>
-                        Application de gestion
-                    </h3>
-                    <p>
-                        Création d'une application permettant
-                        de gérer des utilisateurs et des données
-                        à travers une interface web.
-                    </p>
-                    <div class="tags">
-                        <span>PHP</span>
-                        <span>MySQL</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                    </div>
-                </div>
-            </article>
-            <article class="project">
-                <div class="project-number">
-                    02
-                </div>
-                <div>
-                    <h3>
-                        Application Web
-                    </h3>
-                    <p>
-                        Développement d'une interface responsive
-                        avec JavaScript et consommation d'une API.
-                    </p>
-                    <div class="tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>API</span>
-                    </div>
-                </div>
-            </article>
-            <article class="project">
-                <div class="project-number">
-                    03
-                </div>
-                <div>
-                    <h3>
-                        Projet de synthèse — M207
-                    </h3>
-                    <p>
-                        Projet final permettant de mettre en pratique
-                        les connaissances des modules M201 à M206
-                        dans une application complète.
-                    </p>
-                    <div class="tags">
-                        <span>PHP</span>
-                        <span>MySQL</span>
-                        <span>JavaScript</span>
-                        <span>Git</span>
-                        <span>Cloud</span>
-                    </div>
-                </div>
-            </article>
-        </div>
+============================== -->
+<section class="projects" id="projets">
+    <div class="section-title">
+        <h2>Mes Projets</h2>
+        <p>
+            Quelques projets réalisés pendant ma formation.
+        </p>
+    </div>
+    <div class="projects-container">
+        <article class="project-card">
+            <h3>
+                Portfolio personnel
+            </h3>
+            <p>
+                Création d'un portfolio personnel avec HTML,
+                CSS et PHP pour présenter mon parcours,
+                mes compétences et mes travaux.
+            </p>
+            <a href="#contact" class="btn">
+                En savoir plus
+            </a>
+        </article>
+        <article class="project-card">
+            <h3>
+                Projet Web
+            </h3>
+            <p>
+                Conception et développement d'un projet web
+                dans le cadre de ma formation.
+            </p>
+            <a href="#contact" class="btn">
+                En savoir plus
+            </a>
+        </article>
+        <article class="project-card">
+            <h3>
+                Base de données
+            </h3>
+            <p>
+                Création et gestion d'une base de données
+                avec SQL et MySQL.
+            </p>
+            <a href="#contact" class="btn">
+                En savoir plus
+            </a>
+        </article>
     </div>
 </section>
-<!-- =====================================================
-     ATELIERS (NOUVELLE SECTION)
-===================================================== -->
-<section id="ateliers">
-    <div class="container">
-        <div class="section-title">
-            <p>FORMATION COMPLÉMENTAIRE</p>
-            <h2>Ateliers</h2>
-        </div>
-        <div class="ateliers-grid">
-            <?php foreach ($ateliers as $atelier): ?>
-                <article class="atelier-card">
-                    <div class="atelier-duree">
-                        <?= htmlspecialchars($atelier["duree"]) ?>
-                    </div>
-                    <h3>
-                        <?= htmlspecialchars($atelier["titre"]) ?>
-                    </h3>
-                    <p>
-                        <?= htmlspecialchars($atelier["description"]) ?>
-                    </p>
-                </article>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-<!-- =====================================================
+<!-- ==============================
      CONTACT
-===================================================== -->
+============================== -->
 <section id="contact">
-    <div class="container">
-        <div class="section-title">
-            <p>CONTACT</p>
-            <h2>Me contacter</h2>
-        </div>
-        <?php if ($messageEnvoye): ?>
-            <div class="success">
-                Merci <?= $nomContact ?>,
-                votre message a bien été reçu.
+    <div class="section-title">
+        <h2>Contact</h2>
+        <p>
+            Vous pouvez me contacter grâce à ce formulaire.
+        </p>
+    </div>
+    <div class="contact-container">
+        <?php if ($message_envoye): ?>
+            <div class="success-message">
+                Votre message a bien été envoyé !
             </div>
         <?php endif; ?>
         <form
             class="contact-form"
             method="POST"
-            action="#contact"
+            action=""
         >
             <input
                 type="text"
@@ -906,71 +703,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <input
                 type="email"
                 name="email"
-                placeholder="Votre adresse email"
+                placeholder="Votre adresse e-mail"
                 required
             >
             <textarea
                 name="message"
-                rows="6"
                 placeholder="Votre message"
                 required
             ></textarea>
-            <button
-                type="submit"
-                class="btn btn-primary"
-            >
+            <button type="submit">
                 Envoyer le message
             </button>
         </form>
     </div>
 </section>
-<!-- =====================================================
+<!-- ==============================
      FOOTER
-===================================================== -->
+============================== -->
 <footer>
     <p>
-        ©️ <?= date("Y") ?>
-        <?= $prenom ?> <?= $nom ?> —
-        Portfolio Développeur Web
+        © <?= date("Y") ?> Hajar Dahbi.
+        Tous droits réservés.
     </p>
-    <div class="socials">
-        <a href="#" target="_blank">
-            GitHub
-        </a>
-        <a href="#" target="_blank">
-            LinkedIn
-        </a>
-    </div>
 </footer>
-<script>
-    // =====================================================
-    // PETIT EFFET AU DÉFILEMENT
-    // =====================================================
-    const cards = document.querySelectorAll(
-        ".module-card, .project, .atelier-card"
-    );
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform =
-                        "translateY(0)";
-                }
-            });
-        },
-        {
-            threshold: 0.1
-        }
-    );
-    cards.forEach(card => {
-        card.style.opacity = "0";
-        card.style.transform =
-            "translateY(20px)";
-        card.style.transition =
-            "opacity 0.6s ease, transform 0.6s ease";
-        observer.observe(card);
-    });
-</script>
 </body>
 </html>
