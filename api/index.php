@@ -24,7 +24,7 @@ $modules = [
             ],
             [
                 "title" => "Atelier 2 - Figma",
-                "file" => "pdf/M201/atelier2.pdf"
+                "file" => "docs/figma.pdf"
             ]
         ]
     ],
