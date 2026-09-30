@@ -19,19 +19,38 @@ $modules = [
         "description" => "Analyse des besoins, cahier des charges, conception et organisation d'un projet web.",
         "ateliers" => [
             [
-                "title" => "Atelier 1 - Analyse du projet",
+                "title" => "Atelier 1 - Agence d'immobilier",
                 "file" => "docs/Dahbi_Hajar_Atelier_UML_Immobilier.pdf"
             ],
             [
-                "title" => "Atelier 2 - Cahier des charges",
+                "title" => "Atelier 2 - Figma",
                 "file" => "pdf/M201/atelier2.pdf"
             ]
         ]
     ],
-    [
+
+     [
         "code" => "M202",
-        "title" => "Développement Front-End",
-        "description" => "Création d'interfaces web avec HTML, CSS et JavaScript.",
+        "title" => "Approche agile",
+        "description" => "Appliquer les méthodes agiles en équipe.
+
+",
+        "ateliers" => [
+            [
+                "title" => "Atelier 1 - Gestion de projet : Methodes classiques",
+                "file" => "docs\Atelier 1 gestion de projet methodes classiques.pdf"
+            ],
+            [
+                "title" => "Atelier 2 - JavaScript",
+                "file" => "pdf/M202/atelier2.pdf"
+            ]
+        ]
+    ],
+
+    [
+        "code" => "M203",
+        "title" => "Gestion des donnees",
+        "description" => "Conception, organisation et manipulation des bases de données.",
         "ateliers" => [
             [
                 "title" => "Atelier 1 - HTML & CSS",
@@ -44,9 +63,9 @@ $modules = [
         ]
     ],
     [
-        "code" => "M203",
-        "title" => "Développement Back-End",
-        "description" => "Développement des fonctionnalités côté serveur et gestion des données.",
+        "code" => "M204",
+        "title" => "Développement Front-End",
+        "description" => "Concevoir des interfaces web modernes et interactives.",
         "ateliers" => [
             [
                 "title" => "Atelier 1 - PHP",
@@ -55,10 +74,9 @@ $modules = [
         ]
     ],
     [
-        "code" => "M204",
-        "title" => "Bases de données",
-        "description" => "Conception, organisation et manipulation des bases de données.",
-        "ateliers" => [
+        "code" => "M205",
+        "title" => "Développement Back-End",
+        "description" => " serveur et les fonctionnalités d’une application." => [
             [
                 "title" => "Atelier 1 - SQL",
                 "file" => "pdf/M204/atelier1.pdf"
@@ -66,8 +84,8 @@ $modules = [
         ]
     ],
     [
-        "code" => "M205",
-        "title" => "Développement Web",
+        "code" => "M206",
+        "title" => "Création d’une application Cloud native",
         "description" => "Mise en pratique des technologies et outils du développement web.",
         "ateliers" => [
             [
@@ -77,7 +95,7 @@ $modules = [
         ]
     ],
     [
-        "code" => "M206",
+        "code" => "M207",
         "title" => "Projet de synthèse",
         "description" => "Réalisation d'un projet web complet en utilisant les compétences acquises.",
         "ateliers" => [
@@ -88,7 +106,7 @@ $modules = [
         ]
     ],
     [
-        "code" => "M207",
+        "code" => "M208",
         "title" => "Communication professionnelle",
         "description" => "Communication, présentation et préparation à l'insertion professionnelle.",
         "ateliers" => [
