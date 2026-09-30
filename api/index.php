@@ -41,7 +41,7 @@ $modules = [
                 "file" => "docs\Atelier 1 gestion de projet methodes classiques.pdf"
             ],
             [
-                "title" => "Atelier 2 - JavaScript",
+                "title" => "Atelier 2",
                 "file" => "pdf/M202/atelier2.pdf"
             ]
         ]
@@ -53,11 +53,11 @@ $modules = [
         "description" => "Conception, organisation et manipulation des bases de données.",
         "ateliers" => [
             [
-                "title" => "Atelier 1 - HTML & CSS",
+                "title" => "Atelier 1 ",
                 "file" => "pdf/M202/atelier1.pdf"
             ],
             [
-                "title" => "Atelier 2 - JavaScript",
+                "title" => "Atelier 2",
                 "file" => "pdf/M202/atelier2.pdf"
             ]
         ]
@@ -68,7 +68,7 @@ $modules = [
         "description" => "Concevoir des interfaces web modernes et interactives.",
         "ateliers" => [
             [
-                "title" => "Atelier 1 - PHP",
+                "title" => "Atelier 1",
                 "file" => "pdf/M203/atelier1.pdf"
             ]
         ]
@@ -79,7 +79,7 @@ $modules = [
         "description" => " serveur et les fonctionnalités d’une application.",
         "ateliers" => [
             [
-                "title" => "Atelier 1 - SQL",
+                "title" => "Atelier 1",
                 "file" => "pdf/M204/atelier1.pdf"
             ]
         ]
