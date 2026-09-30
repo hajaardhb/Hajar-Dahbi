@@ -76,7 +76,8 @@ $modules = [
     [
         "code" => "M205",
         "title" => "Développement Back-End",
-        "description" => " serveur et les fonctionnalités d’une application." => [
+        "description" => " serveur et les fonctionnalités d’une application.",
+        "ateliers" => [
             [
                 "title" => "Atelier 1 - SQL",
                 "file" => "pdf/M204/atelier1.pdf"
