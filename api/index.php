@@ -2020,19 +2020,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <article class="project-card">
 
             <h3>
-                Portfolio personnel
+                Remy's Journey
             </h3>
 
             <p>
 
-                Création d'un portfolio personnel avec HTML,
-                CSS et PHP pour présenter mon parcours,
-                mes compétences et mes travaux.
+                Création d’un site web de restaurant inspiré de Ratatouille, 
+                développé avec HTML, CSS, JavaScript et PHP, présentant le menu, 
+                les spécialités et l’univers du restaurant.
 
             </p>
 
             <a href="#contact" class="btn">
-                En savoir plus
+                Voir le projet
             </a>
 
         </article>
@@ -2052,7 +2052,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </p>
 
             <a href="#contact" class="btn">
-                En savoir plus
+                Voir le projet
             </a>
 
         </article>
@@ -2072,7 +2072,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </p>
 
             <a href="#contact" class="btn">
-                En savoir plus
+                Voir le projet
             </a>
 
         </article>
@@ -2176,7 +2176,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 Tél :
                 <a href="tel:+212 0619165777">
-                    + 212 619165777
+                    +212 619165777
                 </a>
 
             </p>
