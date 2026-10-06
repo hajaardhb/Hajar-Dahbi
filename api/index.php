@@ -2,15 +2,11 @@
 $nom = "Dahbi";
 $prenom = "Hajar";
 $metier = "Développeur Web";
+
 /*
 |--------------------------------------------------------------------------
 | MODULES + ATELIERS
 |--------------------------------------------------------------------------
-| Pour ajouter un atelier :
-|
-| 1. Mets le PDF dans le dossier correspondant.
-| 2. Ajoute son nom et son chemin ici.
-|
 */
 $modules = [
     [
@@ -28,17 +24,14 @@ $modules = [
             ]
         ]
     ],
-
-     [
+    [
         "code" => "M202",
         "title" => "Approche agile",
-        "description" => "Appliquer les méthodes agiles en équipe.
-
-",
+        "description" => "Appliquer les méthodes agiles en équipe.",
         "ateliers" => [
             [
                 "title" => "Atelier 1 - Gestion de projet : Methodes classiques",
-                "file" => "docs\Atelier 1 gestion de projet methodes classiques.pdf"
+                "file" => "docs/Atelier 1 gestion de projet methodes classiques.pdf"
             ],
             [
                 "title" => "Atelier 2",
@@ -46,14 +39,13 @@ $modules = [
             ]
         ]
     ],
-
     [
         "code" => "M203",
         "title" => "Gestion des donnees",
         "description" => "Conception, organisation et manipulation des bases de données.",
         "ateliers" => [
             [
-                "title" => "Atelier 1 ",
+                "title" => "Atelier 1",
                 "file" => "pdf/M202/atelier1.pdf"
             ],
             [
@@ -118,16 +110,19 @@ $modules = [
         ]
     ]
 ];
+
 /*
 |--------------------------------------------------------------------------
 | FORMULAIRE DE CONTACT
 |--------------------------------------------------------------------------
 */
 $message_envoye = false;
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nom_contact = htmlspecialchars($_POST["nom"] ?? "");
     $email_contact = htmlspecialchars($_POST["email"] ?? "");
     $message_contact = htmlspecialchars($_POST["message"] ?? "");
+
     if (
         !empty($nom_contact) &&
         !empty($email_contact) &&
@@ -137,613 +132,1530 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>
         Portfolio - <?= htmlspecialchars($prenom . " " . $nom) ?>
     </title>
+
     <style>
-        /* ==============================
+
+        /* =====================================================
            VARIABLES
-        ============================== */
+        ===================================================== */
+
         :root {
-            --rose: #EDAFB8;
-            --rose-clair: #F7E1D7;
-            --beige: #DEDBD2;
-            --vert: #B0C4B1;
-            --texte: #3f403d;
-            --blanc: #ffffff;
+            --primary: #8b5cf6;
+            --primary-dark: #6d28d9;
+            --secondary: #ec4899;
+            --dark: #111827;
+            --dark-light: #1f2937;
+            --text: #374151;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --light: #f8fafc;
+            --border: #e5e7eb;
+
+            --gradient:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #ec4899
+                );
+
+            --shadow:
+                0 10px 30px rgba(17, 24, 39, 0.08);
+
+            --shadow-hover:
+                0 20px 45px rgba(139, 92, 246, 0.18);
         }
-        /* ==============================
+
+
+        /* =====================================================
            RESET
-        ============================== */
+        ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #ffffff;
-            color: var(--texte);
-            line-height: 1.6;
+            font-family:
+                "Segoe UI",
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-        /* ==============================
+
+        a {
+            transition: all 0.3s ease;
+        }
+
+
+        /* =====================================================
            NAVBAR
-        ============================== */
+        ===================================================== */
+
         nav {
             position: fixed;
             top: 0;
             left: 0;
+
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+
+            background:
+                rgba(255, 255, 255, 0.92);
+
+            backdrop-filter: blur(15px);
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             padding: 18px 8%;
+
             z-index: 1000;
-            border-bottom: 1px solid var(--beige);
+
+            border-bottom:
+                1px solid rgba(229, 231, 235, 0.7);
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.03);
+
+            animation: navDown 0.8s ease;
         }
+
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--rose);
+            font-size: 25px;
+            font-weight: 800;
+
+            background: var(--gradient);
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+            letter-spacing: 0.5px;
         }
+
         nav ul {
             list-style: none;
+
             display: flex;
+
             gap: 30px;
         }
+
         nav ul li a {
+            position: relative;
+
             text-decoration: none;
-            color: var(--texte);
-            font-weight: 500;
-            transition: 0.3s;
+
+            color: var(--dark);
+
+            font-weight: 600;
+
+            font-size: 15px;
         }
+
+        nav ul li a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -7px;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--gradient);
+
+            transition: width 0.3s ease;
+        }
+
         nav ul li a:hover {
-            color: var(--rose);
+            color: var(--primary);
         }
-        /* ==============================
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =====================================================
            HERO
-        ============================== */
+        ===================================================== */
+
         .hero {
             min-height: 100vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             text-align: center;
-            padding: 120px 20px 80px;
+
+            padding:
+                130px 20px 80px;
+
+            position: relative;
+
+            overflow: hidden;
+
             background:
-                linear-gradient(
-                    135deg,
-                    var(--rose-clair),
-                    #ffffff,
-                    var(--beige)
-                );
+                radial-gradient(
+                    circle at top left,
+                    rgba(139, 92, 246, 0.16),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(236, 72, 153, 0.14),
+                    transparent 35%
+                ),
+
+                #ffffff;
         }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+            height: 400px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(139, 92, 246, 0.06);
+
+            top: -150px;
+            right: -120px;
+
+            animation:
+                floating 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(236, 72, 153, 0.05);
+
+            bottom: -120px;
+            left: -100px;
+
+            animation:
+                floating 7s ease-in-out infinite reverse;
+        }
+
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
+
+            position: relative;
+
+            z-index: 2;
+
+            animation:
+                heroAppear 1s ease;
         }
+
         .hero h1 {
-            font-size: 55px;
-            margin-bottom: 20px;
+            font-size: 58px;
+
+            line-height: 1.15;
+
+            margin-bottom: 22px;
+
+            color: var(--dark);
+
+            font-weight: 800;
         }
+
         .hero h1 span {
-            color: var(--rose);
+            display: inline-block;
+
+            background: var(--gradient);
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+            animation:
+                textGlow 3s ease-in-out infinite;
         }
+
         .hero h2 {
-            font-size: 28px;
+            font-size: 29px;
+
             margin-bottom: 20px;
-            font-weight: 500;
+
+            font-weight: 600;
+
+            color: var(--primary);
         }
+
         .hero p {
             font-size: 18px;
-            margin-bottom: 30px;
+
+            color: var(--text-light);
+
+            max-width: 700px;
+
+            margin:
+                0 auto 32px;
         }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
         .btn {
             display: inline-block;
-            padding: 12px 25px;
-            background: var(--rose);
+
+            padding:
+                13px 28px;
+
+            background: var(--gradient);
+
             color: white;
+
             text-decoration: none;
-            border-radius: 25px;
-            transition: 0.3s;
+
+            border-radius: 30px;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 8px 20px
+                rgba(139, 92, 246, 0.25);
+
+            position: relative;
+
+            overflow: hidden;
         }
+
+        .btn::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -100%;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                rgba(255, 255, 255, 0.18);
+
+            transition:
+                left 0.4s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
         .btn:hover {
-            background: var(--vert);
-            transform: translateY(-2px);
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 14px 28px
+                rgba(139, 92, 246, 0.3);
         }
-        /* ==============================
+
+
+        /* =====================================================
            SECTIONS
-        ============================== */
+        ===================================================== */
+
         section {
-            padding: 90px 8%;
-            background: #ffffff;
+            padding:
+                100px 8%;
+
+            background:
+                var(--white);
         }
+
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+
+            margin-bottom: 55px;
+
+            animation:
+                fadeUp 0.8s ease;
         }
+
         .section-title h2 {
-            font-size: 35px;
+            font-size: 38px;
+
             margin-bottom: 10px;
+
+            color: var(--dark);
+
+            font-weight: 800;
         }
+
+        .section-title h2::after {
+            content: "";
+
+            display: block;
+
+            width: 55px;
+            height: 4px;
+
+            margin:
+                12px auto 0;
+
+            border-radius: 10px;
+
+            background: var(--gradient);
+        }
+
         .section-title p {
-            color: #777;
+            color: var(--text-light);
+
+            margin-top: 12px;
         }
-        /* ==============================
+
+
+        /* =====================================================
            ABOUT
-        ============================== */
+        ===================================================== */
+
         .about {
             max-width: 900px;
+
             margin: auto;
+
             text-align: center;
+
+            background:
+                #ffffff;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            box-shadow: var(--shadow);
+
+            border:
+                1px solid var(--border);
+
+            animation:
+                fadeUp 0.9s ease;
         }
+
         .about p {
             font-size: 17px;
+
             margin-bottom: 15px;
+
+            color: var(--text-light);
         }
-        /* ==============================
+
+
+        /* =====================================================
            MODULES
-        ============================== */
+        ===================================================== */
+
         .modules {
-            background: var(--rose-clair);
+            background:
+                linear-gradient(
+                    180deg,
+                    #faf8ff,
+                    #ffffff
+                );
         }
+
         .modules-container {
             max-width: 1200px;
+
             margin: auto;
+
             display: grid;
+
             grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 28px;
         }
+
         .module-card {
             background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: 0.3s;
+
+            padding: 28px;
+
+            border-radius: 18px;
+
+            box-shadow: var(--shadow);
+
+            border:
+                1px solid var(--border);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+            position: relative;
+
+            overflow: hidden;
         }
+
+        .module-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 4px;
+
+            background: var(--gradient);
+
+            transform:
+                scaleX(0);
+
+            transform-origin:
+                left;
+
+            transition:
+                transform 0.35s ease;
+        }
+
         .module-card:hover {
-            transform: translateY(-5px);
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                var(--shadow-hover);
         }
+
+        .module-card:hover::before {
+            transform:
+                scaleX(1);
+        }
+
         .module-code {
             display: inline-block;
-            background: var(--vert);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            margin-bottom: 15px;
+
+            background:
+                rgba(139, 92, 246, 0.1);
+
+            color:
+                var(--primary);
+
+            padding:
+                6px 13px;
+
+            border-radius:
+                20px;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            margin-bottom:
+                15px;
         }
+
         .module-card h3 {
             margin-bottom: 10px;
+
             font-size: 21px;
+
+            color: var(--dark);
         }
+
         .module-card p {
-            color: #666;
+            color: var(--text-light);
         }
-        /* ==============================
+
+
+        /* =====================================================
            ATELIERS
-        ============================== */
+        ===================================================== */
+
         .ateliers {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid var(--beige);
+            margin-top: 22px;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid var(--border);
         }
+
         .ateliers h4 {
-            margin-bottom: 12px;
+            margin-bottom: 13px;
+
             font-size: 17px;
+
+            color: var(--dark);
         }
+
         .atelier-btn {
             display: block;
-            margin-bottom: 8px;
-            padding: 10px 14px;
-            background: var(--rose-clair);
-            color: var(--texte);
+
+            margin-bottom: 9px;
+
+            padding:
+                11px 14px;
+
+            background:
+                #f8f5ff;
+
+            color:
+                var(--dark);
+
             text-decoration: none;
-            border-radius: 10px;
-            transition: 0.3s;
+
+            border-radius:
+                10px;
+
+            border:
+                1px solid transparent;
+
+            transition:
+                all 0.3s ease;
         }
+
         .atelier-btn:hover {
-            background: var(--rose);
-            transform: translateY(-2px);
+            background:
+                rgba(139, 92, 246, 0.1);
+
+            color:
+                var(--primary);
+
+            border-color:
+                rgba(139, 92, 246, 0.2);
+
+            transform:
+                translateX(5px);
         }
-        /* ==============================
+
+
+        /* =====================================================
            COMPETENCES
-        ============================== */
+        ===================================================== */
+
         .skills-container {
             max-width: 1000px;
+
             margin: auto;
+
             display: grid;
+
             grid-template-columns:
-                repeat(auto-fit, minmax(200px, 1fr));
+                repeat(
+                    auto-fit,
+                    minmax(200px, 1fr)
+                );
+
             gap: 20px;
         }
+
         .skill {
-            background: var(--beige);
+            background:
+                #f8fafc;
+
             padding: 25px;
+
             border-radius: 15px;
+
             text-align: center;
-            font-weight: bold;
+
+            font-weight: 700;
+
+            color: var(--dark);
+
+            border:
+                1px solid var(--border);
+
+            transition:
+                all 0.3s ease;
+
+            animation:
+                fadeUp 0.7s ease;
         }
-        .skill:nth-child(even) {
-            background: var(--vert);
+
+        .skill:hover {
+            background:
+                var(--gradient);
+
+            color: white;
+
+            transform:
+                translateY(-6px);
+
+            border-color:
+                transparent;
+
+            box-shadow:
+                0 12px 25px
+                rgba(139, 92, 246, 0.2);
         }
-        /* ==============================
+
+
+        /* =====================================================
            PROJETS
-        ============================== */
+        ===================================================== */
+
         .projects {
-            background: var(--rose-clair);
+            background:
+                linear-gradient(
+                    180deg,
+                    #faf8ff,
+                    #ffffff
+                );
         }
+
         .projects-container {
             max-width: 1100px;
+
             margin: auto;
+
             display: grid;
+
             grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 28px;
         }
+
         .project-card {
             background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.05);
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow: var(--shadow);
+
+            border:
+                1px solid var(--border);
+
+            transition:
+                all 0.35s ease;
         }
+
+        .project-card:hover {
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
         .project-card h3 {
             margin-bottom: 12px;
+
+            color: var(--dark);
+
+            font-size: 21px;
         }
+
         .project-card p {
-            color: #666;
-            margin-bottom: 20px;
+            color: var(--text-light);
+
+            margin-bottom: 22px;
         }
-        /* ==============================
+
+
+        /* =====================================================
            CONTACT
-        ============================== */
+        ===================================================== */
+
         .contact-container {
             max-width: 700px;
+
             margin: auto;
         }
+
         .contact-form {
             display: flex;
+
             flex-direction: column;
-            gap: 15px;
+
+            gap: 16px;
         }
+
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 14px;
-            border: 1px solid var(--beige);
-            border-radius: 10px;
+
+            padding: 15px 17px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 12px;
+
             font-family: inherit;
+
+            font-size: 15px;
+
             outline: none;
+
+            background: #fafafa;
+
+            transition:
+                all 0.3s ease;
         }
+
         .contact-form input:focus,
         .contact-form textarea:focus {
-            border-color: var(--rose);
+            border-color:
+                var(--primary);
+
+            background:
+                white;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(139, 92, 246, 0.08);
+
+            transform:
+                translateY(-2px);
         }
+
         .contact-form textarea {
             min-height: 150px;
+
             resize: vertical;
         }
+
         .contact-form button {
             border: none;
+
             padding: 14px;
-            background: var(--rose);
+
+            background:
+                var(--gradient);
+
             color: white;
-            border-radius: 25px;
+
+            border-radius: 30px;
+
             cursor: pointer;
+
             font-size: 16px;
-            transition: 0.3s;
+
+            font-weight: 600;
+
+            transition:
+                all 0.3s ease;
+
+            box-shadow:
+                0 8px 20px
+                rgba(139, 92, 246, 0.2);
         }
+
         .contact-form button:hover {
-            background: var(--vert);
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 14px 28px
+                rgba(139, 92, 246, 0.3);
         }
+
         .success-message {
-            background: var(--vert);
+            background:
+                #dcfce7;
+
+            color:
+                #166534;
+
             padding: 15px;
-            border-radius: 10px;
+
+            border-radius: 12px;
+
             margin-bottom: 20px;
+
             text-align: center;
+
+            border:
+                1px solid #bbf7d0;
+
+            animation:
+                success 0.5s ease;
         }
-        /* ==============================
+
+
+        /* =====================================================
            FOOTER
-        ============================== */
+        ===================================================== */
+
         footer {
-            background: var(--beige);
-            text-align: center;
-            padding: 25px;
+            background:
+                var(--dark);
+
+            color:
+                #d1d5db;
+
+            text-align:
+                center;
+
+            padding:
+                28px;
+
             margin-top: 0;
         }
-        /* ==============================
+
+        footer p {
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           ANIMATIONS
+        ===================================================== */
+
+        @keyframes navDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heroAppear {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floating {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes textGlow {
+            0%,
+            100% {
+                filter:
+                    drop-shadow(
+                        0 0 0
+                        rgba(139, 92, 246, 0)
+                    );
+            }
+
+            50% {
+                filter:
+                    drop-shadow(
+                        0 0 12px
+                        rgba(139, 92, 246, 0.2)
+                    );
+            }
+        }
+
+        @keyframes success {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
+        /* =====================================================
            RESPONSIVE
-        ============================== */
+        ===================================================== */
+
         @media (max-width: 768px) {
+
             nav {
                 flex-direction: column;
+
                 gap: 15px;
+
+                padding:
+                    15px 5%;
             }
+
             nav ul {
                 gap: 15px;
+
                 flex-wrap: wrap;
+
                 justify-content: center;
             }
+
+            nav ul li a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding-top:
+                    160px;
+            }
+
             .hero h1 {
                 font-size: 40px;
             }
+
             .hero h2 {
                 font-size: 23px;
             }
+
+            .hero p {
+                font-size: 16px;
+            }
+
             section {
-                padding: 70px 5%;
+                padding:
+                    75px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 31px;
+            }
+
+            .about {
+                padding: 25px;
             }
         }
+
+
+        /* =====================================================
+           PETITS ÉCRANS
+        ===================================================== */
+
+        @media (max-width: 480px) {
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+            }
+
+            .module-card,
+            .project-card {
+                padding: 22px;
+            }
+        }
+
     </style>
 </head>
+
 <body>
-<!-- ==============================
+
+
+<!-- =====================================================
      NAVIGATION
-============================== -->
+===================================================== -->
+
 <nav>
+
     <div class="logo">
         Hajar Dahbi
     </div>
+
     <ul>
+
         <li>
-            <a href="#accueil">Accueil</a>
+            <a href="#accueil">
+                Accueil
+            </a>
         </li>
+
         <li>
-            <a href="#apropos">À propos</a>
+            <a href="#apropos">
+                À propos
+            </a>
         </li>
+
         <li>
-            <a href="#modules">Modules</a>
+            <a href="#modules">
+                Modules
+            </a>
         </li>
+
         <li>
-            <a href="#competences">Compétences</a>
+            <a href="#competences">
+                Compétences
+            </a>
         </li>
+
         <li>
-            <a href="#projets">Projets</a>
+            <a href="#projets">
+                Projets
+            </a>
         </li>
+
         <li>
-            <a href="#contact">Contact</a>
+            <a href="#contact">
+                Contact
+            </a>
         </li>
+
     </ul>
+
 </nav>
-<!-- ==============================
+
+
+<!-- =====================================================
      ACCUEIL
-============================== -->
+===================================================== -->
+
 <section class="hero" id="accueil">
+
     <div class="hero-content">
+
         <h1>
             Bonjour, je suis
             <span>Hajar Dahbi</span>
         </h1>
+
         <h2>
             Développeur Web
         </h2>
+
         <p>
             Bienvenue sur mon portfolio.
             Découvrez mon parcours, mes compétences,
             mes modules, mes ateliers et mes projets.
         </p>
+
         <a href="#modules" class="btn">
             Découvrir mes modules
         </a>
+
     </div>
+
 </section>
-<!-- ==============================
+
+
+<!-- =====================================================
      À PROPOS
-============================== -->
+===================================================== -->
+
 <section id="apropos">
+
     <div class="section-title">
-        <h2>À propos de moi</h2>
+
+        <h2>
+            À propos de moi
+        </h2>
+
         <p>
             Découvrez mon parcours et mes objectifs.
         </p>
+
     </div>
+
+
     <div class="about">
+
         <p>
             Je suis Hajar Dahbi, étudiante en développement web.
             Je m'intéresse à la création de sites web modernes,
             simples et interactifs.
         </p>
+
         <p>
             À travers ma formation, je développe mes compétences
             en développement Front-End, Back-End, bases de données
             et gestion de projets web.
         </p>
+
     </div>
+
 </section>
-<!-- ==============================
+
+
+<!-- =====================================================
      MODULES
-============================== -->
+===================================================== -->
+
 <section class="modules" id="modules">
+
     <div class="section-title">
-        <h2>Mes Modules</h2>
+
+        <h2>
+            Mes Modules
+        </h2>
+
         <p>
             Retrouvez mes modules et les ateliers réalisés
             pendant ma formation.
         </p>
+
     </div>
+
+
     <div class="modules-container">
+
         <?php foreach ($modules as $module): ?>
+
             <article class="module-card">
+
                 <div class="module-code">
+
                     <?= htmlspecialchars($module["code"]) ?>
+
                 </div>
+
                 <h3>
+
                     <?= htmlspecialchars($module["title"]) ?>
+
                 </h3>
+
                 <p>
+
                     <?= htmlspecialchars($module["description"]) ?>
+
                 </p>
+
+
                 <?php if (!empty($module["ateliers"])): ?>
+
                     <div class="ateliers">
+
                         <h4>
                             📚 Ateliers
                         </h4>
+
+
                         <?php foreach ($module["ateliers"] as $atelier): ?>
+
                             <a
                                 href="<?= htmlspecialchars($atelier["file"]) ?>"
                                 target="_blank"
                                 class="atelier-btn"
                             >
+
                                 📄
                                 <?= htmlspecialchars($atelier["title"]) ?>
+
                             </a>
+
                         <?php endforeach; ?>
+
                     </div>
+
                 <?php endif; ?>
+
             </article>
+
         <?php endforeach; ?>
+
     </div>
+
 </section>
-<!-- ==============================
+
+
+<!-- =====================================================
      COMPÉTENCES
-============================== -->
+===================================================== -->
+
 <section id="competences">
+
     <div class="section-title">
-        <h2>Mes Compétences</h2>
+
+        <h2>
+            Mes Compétences
+        </h2>
+
         <p>
             Les technologies et compétences que j'utilise.
         </p>
+
     </div>
+
+
     <div class="skills-container">
+
         <div class="skill">
             HTML
         </div>
+
         <div class="skill">
             CSS
         </div>
+
         <div class="skill">
             JavaScript
         </div>
+
         <div class="skill">
             PHP
         </div>
+
         <div class="skill">
             MySQL
         </div>
+
         <div class="skill">
             Git / GitHub
         </div>
+
         <div class="skill">
             UML
         </div>
+
         <div class="skill">
             Conception Web
         </div>
+
     </div>
+
 </section>
-<!-- ==============================
+
+
+<!-- =====================================================
      PROJETS
-============================== -->
+===================================================== -->
+
 <section class="projects" id="projets">
+
     <div class="section-title">
-        <h2>Mes Projets</h2>
+
+        <h2>
+            Mes Projets
+        </h2>
+
         <p>
             Quelques projets réalisés pendant ma formation.
         </p>
+
     </div>
+
+
     <div class="projects-container">
+
         <article class="project-card">
+
             <h3>
                 Portfolio personnel
             </h3>
+
             <p>
                 Création d'un portfolio personnel avec HTML,
                 CSS et PHP pour présenter mon parcours,
                 mes compétences et mes travaux.
             </p>
+
             <a href="#contact" class="btn">
                 En savoir plus
             </a>
+
         </article>
+
+
         <article class="project-card">
+
             <h3>
                 Projet Web
             </h3>
+
             <p>
                 Conception et développement d'un projet web
                 dans le cadre de ma formation.
             </p>
+
             <a href="#contact" class="btn">
                 En savoir plus
             </a>
+
         </article>
+
+
         <article class="project-card">
+
             <h3>
                 Base de données
             </h3>
+
             <p>
                 Création et gestion d'une base de données
                 avec SQL et MySQL.
             </p>
+
             <a href="#contact" class="btn">
                 En savoir plus
             </a>
+
         </article>
+
     </div>
+
 </section>
-<!-- ==============================
+
+
+<!-- =====================================================
      CONTACT
-============================== -->
+===================================================== -->
+
 <section id="contact">
+
     <div class="section-title">
-        <h2>Contact</h2>
+
+        <h2>
+            Contact
+        </h2>
+
         <p>
             Vous pouvez me contacter grâce à ce formulaire.
         </p>
+
     </div>
+
+
     <div class="contact-container">
+
         <?php if ($message_envoye): ?>
+
             <div class="success-message">
+
                 Votre message a bien été envoyé !
+
             </div>
+
         <?php endif; ?>
+
+
         <form
             class="contact-form"
             method="POST"
             action=""
         >
+
             <input
                 type="text"
                 name="nom"
                 placeholder="Votre nom"
                 required
             >
+
             <input
                 type="email"
                 name="email"
                 placeholder="Votre adresse e-mail"
                 required
             >
+
             <textarea
                 name="message"
                 placeholder="Votre message"
                 required
             ></textarea>
+
             <button type="submit">
                 Envoyer le message
             </button>
+
         </form>
+
     </div>
+
 </section>
-<!-- ==============================
+
+
+<!-- =====================================================
      FOOTER
-============================== -->
+===================================================== -->
+
 <footer>
+
     <p>
+
         © <?= date("Y") ?> Hajar Dahbi.
         Tous droits réservés.
+
     </p>
+
 </footer>
+
 </body>
+
 </html>
