@@ -2031,7 +2031,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             </p>
 
-            <a href="#contact" class="btn">
+            <a href="docs/home.php" class="btn">
                 Voir le projet
             </a>
 
