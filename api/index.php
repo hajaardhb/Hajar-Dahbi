@@ -119,6 +119,7 @@ $modules = [
 $message_envoye = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     $nom_contact = htmlspecialchars($_POST["nom"] ?? "");
     $email_contact = htmlspecialchars($_POST["email"] ?? "");
     $message_contact = htmlspecialchars($_POST["message"] ?? "");
@@ -137,12 +138,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="fr">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>
         Portfolio - <?= htmlspecialchars($prenom . " " . $nom) ?>
     </title>
+
 
     <style>
 
@@ -151,29 +158,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ===================================================== */
 
         :root {
-            --primary: #8b5cf6;
-            --primary-dark: #6d28d9;
-            --secondary: #ec4899;
-            --dark: #111827;
-            --dark-light: #1f2937;
-            --text: #374151;
-            --text-light: #6b7280;
-            --white: #ffffff;
-            --light: #f8fafc;
-            --border: #e5e7eb;
+
+            --bleu-fonce: #0f172a;
+            --bleu: #2563eb;
+            --bleu-clair: #3b82f6;
+            --bleu-pale: #eff6ff;
+
+            --gris-fonce: #1e293b;
+            --gris: #64748b;
+            --gris-clair: #f1f5f9;
+
+            --blanc: #ffffff;
+
+            --border: #e2e8f0;
 
             --gradient:
                 linear-gradient(
                     135deg,
-                    #8b5cf6,
-                    #ec4899
+                    #0f172a,
+                    #2563eb
                 );
 
             --shadow:
-                0 10px 30px rgba(17, 24, 39, 0.08);
+                0 10px 30px
+                rgba(15, 23, 42, 0.08);
 
             --shadow-hover:
-                0 20px 45px rgba(139, 92, 246, 0.18);
+                0 20px 40px
+                rgba(37, 99, 235, 0.16);
         }
 
 
@@ -182,122 +194,171 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ===================================================== */
 
         * {
+
             margin: 0;
             padding: 0;
+
             box-sizing: border-box;
         }
 
+
         html {
+
             scroll-behavior: smooth;
         }
 
+
         body {
+
             font-family:
                 "Segoe UI",
                 Arial,
                 Helvetica,
                 sans-serif;
 
-            background: var(--white);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
+            background:
+                var(--blanc);
 
-        a {
-            transition: all 0.3s ease;
+            color:
+                var(--gris-fonce);
+
+            line-height:
+                1.7;
+
+            overflow-x:
+                hidden;
         }
 
 
         /* =====================================================
-           NAVBAR
+           NAVIGATION
         ===================================================== */
 
         nav {
+
             position: fixed;
+
             top: 0;
             left: 0;
 
             width: 100%;
 
-            background:
-                rgba(255, 255, 255, 0.92);
-
-            backdrop-filter: blur(15px);
-
             display: flex;
-            justify-content: space-between;
-            align-items: center;
 
-            padding: 18px 8%;
+            justify-content:
+                space-between;
 
-            z-index: 1000;
+            align-items:
+                center;
+
+            padding:
+                18px 8%;
+
+            background:
+                rgba(255, 255, 255, 0.94);
+
+            backdrop-filter:
+                blur(15px);
 
             border-bottom:
-                1px solid rgba(229, 231, 235, 0.7);
+                1px solid var(--border);
 
             box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.03);
+                0 4px 20px
+                rgba(15, 23, 42, 0.04);
 
-            animation: navDown 0.8s ease;
+            z-index:
+                1000;
+
+            animation:
+                navDown 0.7s ease;
         }
+
 
         .logo {
-            font-size: 25px;
-            font-weight: 800;
 
-            background: var(--gradient);
+            font-size:
+                25px;
 
-            -webkit-background-clip: text;
-            background-clip: text;
+            font-weight:
+                800;
 
-            color: transparent;
-
-            letter-spacing: 0.5px;
+            color:
+                var(--bleu);
         }
+
 
         nav ul {
-            list-style: none;
 
-            display: flex;
+            list-style:
+                none;
 
-            gap: 30px;
+            display:
+                flex;
+
+            gap:
+                30px;
         }
+
 
         nav ul li a {
-            position: relative;
 
-            text-decoration: none;
+            text-decoration:
+                none;
 
-            color: var(--dark);
+            color:
+                var(--gris-fonce);
 
-            font-weight: 600;
+            font-size:
+                15px;
 
-            font-size: 15px;
+            font-weight:
+                600;
+
+            position:
+                relative;
         }
+
 
         nav ul li a::after {
-            content: "";
 
-            position: absolute;
+            content:
+                "";
 
-            left: 0;
-            bottom: -7px;
+            position:
+                absolute;
 
-            width: 0;
-            height: 2px;
+            left:
+                0;
 
-            background: var(--gradient);
+            bottom:
+                -7px;
 
-            transition: width 0.3s ease;
+            width:
+                0;
+
+            height:
+                2px;
+
+            background:
+                var(--bleu);
+
+            transition:
+                width 0.3s ease;
         }
+
 
         nav ul li a:hover {
-            color: var(--primary);
+
+            color:
+                var(--bleu);
         }
 
+
         nav ul li a:hover::after {
-            width: 100%;
+
+            width:
+                100%;
         }
 
 
@@ -306,130 +367,174 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ===================================================== */
 
         .hero {
-            min-height: 100vh;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            min-height:
+                100vh;
 
-            text-align: center;
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            text-align:
+                center;
 
             padding:
                 130px 20px 80px;
 
-            position: relative;
+            position:
+                relative;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
             background:
-                radial-gradient(
-                    circle at top left,
-                    rgba(139, 92, 246, 0.16),
-                    transparent 35%
-                ),
-
-                radial-gradient(
-                    circle at bottom right,
-                    rgba(236, 72, 153, 0.14),
-                    transparent 35%
-                ),
-
-                #ffffff;
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #ffffff,
+                    #f8fafc
+                );
         }
 
+
         .hero::before {
-            content: "";
 
-            position: absolute;
+            content:
+                "";
 
-            width: 400px;
-            height: 400px;
+            position:
+                absolute;
 
-            border-radius: 50%;
+            width:
+                420px;
+
+            height:
+                420px;
+
+            border-radius:
+                50%;
 
             background:
-                rgba(139, 92, 246, 0.06);
+                rgba(37, 99, 235, 0.08);
 
-            top: -150px;
-            right: -120px;
+            top:
+                -170px;
+
+            right:
+                -100px;
 
             animation:
                 floating 6s ease-in-out infinite;
         }
 
+
         .hero::after {
-            content: "";
 
-            position: absolute;
+            content:
+                "";
 
-            width: 300px;
-            height: 300px;
+            position:
+                absolute;
 
-            border-radius: 50%;
+            width:
+                300px;
+
+            height:
+                300px;
+
+            border-radius:
+                50%;
 
             background:
-                rgba(236, 72, 153, 0.05);
+                rgba(15, 23, 42, 0.05);
 
-            bottom: -120px;
-            left: -100px;
+            bottom:
+                -120px;
+
+            left:
+                -100px;
 
             animation:
                 floating 7s ease-in-out infinite reverse;
         }
 
+
         .hero-content {
-            max-width: 850px;
 
-            position: relative;
+            max-width:
+                850px;
 
-            z-index: 2;
+            position:
+                relative;
+
+            z-index:
+                2;
 
             animation:
-                heroAppear 1s ease;
+                heroAppear 0.9s ease;
         }
+
 
         .hero h1 {
-            font-size: 58px;
 
-            line-height: 1.15;
+            font-size:
+                58px;
 
-            margin-bottom: 22px;
+            line-height:
+                1.15;
 
-            color: var(--dark);
+            margin-bottom:
+                22px;
 
-            font-weight: 800;
+            color:
+                var(--bleu-fonce);
+
+            font-weight:
+                800;
         }
+
 
         .hero h1 span {
-            display: inline-block;
 
-            background: var(--gradient);
+            color:
+                var(--bleu);
 
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            color: transparent;
-
-            animation:
-                textGlow 3s ease-in-out infinite;
+            display:
+                inline-block;
         }
+
 
         .hero h2 {
-            font-size: 29px;
 
-            margin-bottom: 20px;
+            font-size:
+                29px;
 
-            font-weight: 600;
+            margin-bottom:
+                20px;
 
-            color: var(--primary);
+            font-weight:
+                600;
+
+            color:
+                var(--bleu);
         }
 
+
         .hero p {
-            font-size: 18px;
 
-            color: var(--text-light);
+            font-size:
+                18px;
 
-            max-width: 700px;
+            color:
+                var(--gris);
+
+            max-width:
+                700px;
 
             margin:
                 0 auto 32px;
@@ -437,63 +542,52 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         /* =====================================================
-           BUTTONS
+           BOUTONS
         ===================================================== */
 
         .btn {
-            display: inline-block;
+
+            display:
+                inline-block;
 
             padding:
                 13px 28px;
 
-            background: var(--gradient);
+            background:
+                var(--bleu);
 
-            color: white;
+            color:
+                white;
 
-            text-decoration: none;
+            text-decoration:
+                none;
 
-            border-radius: 30px;
+            border-radius:
+                8px;
 
-            font-weight: 600;
+            font-weight:
+                600;
 
             box-shadow:
                 0 8px 20px
-                rgba(139, 92, 246, 0.25);
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: -100%;
-
-            width: 100%;
-            height: 100%;
-
-            background:
-                rgba(255, 255, 255, 0.18);
+                rgba(37, 99, 235, 0.22);
 
             transition:
-                left 0.4s ease;
+                all 0.3s ease;
         }
 
-        .btn:hover::before {
-            left: 100%;
-        }
 
         .btn:hover {
+
+            background:
+                var(--bleu-clair);
+
             transform:
                 translateY(-4px);
 
             box-shadow:
                 0 14px 28px
-                rgba(139, 92, 246, 0.3);
+                rgba(37, 99, 235, 0.25);
         }
 
 
@@ -502,88 +596,124 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ===================================================== */
 
         section {
+
             padding:
                 100px 8%;
 
             background:
-                var(--white);
+                var(--blanc);
         }
 
-        .section-title {
-            text-align: center;
 
-            margin-bottom: 55px;
+        .section-title {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                55px;
 
             animation:
                 fadeUp 0.8s ease;
         }
 
+
         .section-title h2 {
-            font-size: 38px;
 
-            margin-bottom: 10px;
+            font-size:
+                38px;
 
-            color: var(--dark);
+            margin-bottom:
+                10px;
 
-            font-weight: 800;
+            color:
+                var(--bleu-fonce);
+
+            font-weight:
+                800;
         }
 
+
         .section-title h2::after {
-            content: "";
 
-            display: block;
+            content:
+                "";
 
-            width: 55px;
-            height: 4px;
+            display:
+                block;
+
+            width:
+                55px;
+
+            height:
+                4px;
 
             margin:
                 12px auto 0;
 
-            border-radius: 10px;
+            border-radius:
+                10px;
 
-            background: var(--gradient);
+            background:
+                var(--bleu);
         }
 
-        .section-title p {
-            color: var(--text-light);
 
-            margin-top: 12px;
+        .section-title p {
+
+            color:
+                var(--gris);
+
+            margin-top:
+                12px;
         }
 
 
         /* =====================================================
-           ABOUT
+           À PROPOS
         ===================================================== */
 
         .about {
-            max-width: 900px;
 
-            margin: auto;
+            max-width:
+                900px;
 
-            text-align: center;
+            margin:
+                auto;
+
+            text-align:
+                center;
 
             background:
-                #ffffff;
+                var(--blanc);
 
-            padding: 35px;
+            padding:
+                35px;
 
-            border-radius: 20px;
-
-            box-shadow: var(--shadow);
+            border-radius:
+                15px;
 
             border:
                 1px solid var(--border);
+
+            box-shadow:
+                var(--shadow);
 
             animation:
                 fadeUp 0.9s ease;
         }
 
+
         .about p {
-            font-size: 17px;
 
-            margin-bottom: 15px;
+            font-size:
+                17px;
 
-            color: var(--text-light);
+            margin-bottom:
+                15px;
+
+            color:
+                var(--gris);
         }
 
 
@@ -592,20 +722,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ===================================================== */
 
         .modules {
+
             background:
-                linear-gradient(
-                    180deg,
-                    #faf8ff,
-                    #ffffff
-                );
+                var(--gris-clair);
         }
 
+
         .modules-container {
-            max-width: 1200px;
 
-            margin: auto;
+            max-width:
+                1200px;
 
-            display: grid;
+            margin:
+                auto;
+
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(
@@ -613,42 +745,61 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     minmax(280px, 1fr)
                 );
 
-            gap: 28px;
+            gap:
+                28px;
         }
 
+
         .module-card {
-            background: white;
 
-            padding: 28px;
+            background:
+                var(--blanc);
 
-            border-radius: 18px;
+            padding:
+                28px;
 
-            box-shadow: var(--shadow);
+            border-radius:
+                15px;
 
             border:
                 1px solid var(--border);
 
+            box-shadow:
+                var(--shadow);
+
             transition:
-                transform 0.35s ease,
-                box-shadow 0.35s ease;
+                all 0.35s ease;
 
-            position: relative;
+            position:
+                relative;
 
-            overflow: hidden;
+            overflow:
+                hidden;
         }
 
+
         .module-card::before {
-            content: "";
 
-            position: absolute;
+            content:
+                "";
 
-            top: 0;
-            left: 0;
+            position:
+                absolute;
 
-            width: 100%;
-            height: 4px;
+            top:
+                0;
 
-            background: var(--gradient);
+            left:
+                0;
+
+            width:
+                100%;
+
+            height:
+                4px;
+
+            background:
+                var(--bleu);
 
             transform:
                 scaleX(0);
@@ -660,7 +811,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 transform 0.35s ease;
         }
 
+
         .module-card:hover {
+
             transform:
                 translateY(-8px);
 
@@ -668,25 +821,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 var(--shadow-hover);
         }
 
+
         .module-card:hover::before {
+
             transform:
                 scaleX(1);
         }
 
+
         .module-code {
-            display: inline-block;
+
+            display:
+                inline-block;
 
             background:
-                rgba(139, 92, 246, 0.1);
+                var(--bleu-pale);
 
             color:
-                var(--primary);
+                var(--bleu);
 
             padding:
                 6px 13px;
 
             border-radius:
-                20px;
+                6px;
 
             font-size:
                 13px;
@@ -698,16 +856,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 15px;
         }
 
+
         .module-card h3 {
-            margin-bottom: 10px;
 
-            font-size: 21px;
+            margin-bottom:
+                10px;
 
-            color: var(--dark);
+            font-size:
+                21px;
+
+            color:
+                var(--bleu-fonce);
         }
 
+
         .module-card p {
-            color: var(--text-light);
+
+            color:
+                var(--gris);
         }
 
 
@@ -716,40 +882,53 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ===================================================== */
 
         .ateliers {
-            margin-top: 22px;
 
-            padding-top: 18px;
+            margin-top:
+                22px;
+
+            padding-top:
+                18px;
 
             border-top:
                 1px solid var(--border);
         }
 
+
         .ateliers h4 {
-            margin-bottom: 13px;
 
-            font-size: 17px;
+            margin-bottom:
+                13px;
 
-            color: var(--dark);
+            font-size:
+                17px;
+
+            color:
+                var(--bleu-fonce);
         }
 
-        .atelier-btn {
-            display: block;
 
-            margin-bottom: 9px;
+        .atelier-btn {
+
+            display:
+                block;
+
+            margin-bottom:
+                9px;
 
             padding:
                 11px 14px;
 
             background:
-                #f8f5ff;
+                var(--gris-clair);
 
             color:
-                var(--dark);
+                var(--gris-fonce);
 
-            text-decoration: none;
+            text-decoration:
+                none;
 
             border-radius:
-                10px;
+                8px;
 
             border:
                 1px solid transparent;
@@ -758,15 +937,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 all 0.3s ease;
         }
 
+
         .atelier-btn:hover {
+
             background:
-                rgba(139, 92, 246, 0.1);
+                var(--bleu-pale);
 
             color:
-                var(--primary);
+                var(--bleu);
 
             border-color:
-                rgba(139, 92, 246, 0.2);
+                #bfdbfe;
 
             transform:
                 translateX(5px);
@@ -774,15 +955,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         /* =====================================================
-           COMPETENCES
+           COMPÉTENCES
         ===================================================== */
 
         .skills-container {
-            max-width: 1000px;
 
-            margin: auto;
+            max-width:
+                1000px;
 
-            display: grid;
+            margin:
+                auto;
+
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(
@@ -790,48 +975,53 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     minmax(200px, 1fr)
                 );
 
-            gap: 20px;
+            gap:
+                20px;
         }
 
+
         .skill {
+
             background:
-                #f8fafc;
+                var(--gris-clair);
 
-            padding: 25px;
+            padding:
+                25px;
 
-            border-radius: 15px;
+            border-radius:
+                12px;
 
-            text-align: center;
+            text-align:
+                center;
 
-            font-weight: 700;
+            font-weight:
+                700;
 
-            color: var(--dark);
+            color:
+                var(--bleu-fonce);
 
             border:
                 1px solid var(--border);
 
             transition:
                 all 0.3s ease;
-
-            animation:
-                fadeUp 0.7s ease;
         }
 
-        .skill:hover {
-            background:
-                var(--gradient);
 
-            color: white;
+        .skill:hover {
+
+            background:
+                var(--bleu);
+
+            color:
+                white;
 
             transform:
                 translateY(-6px);
 
-            border-color:
-                transparent;
-
             box-shadow:
                 0 12px 25px
-                rgba(139, 92, 246, 0.2);
+                rgba(37, 99, 235, 0.2);
         }
 
 
@@ -840,20 +1030,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ===================================================== */
 
         .projects {
+
             background:
-                linear-gradient(
-                    180deg,
-                    #faf8ff,
-                    #ffffff
-                );
+                var(--gris-clair);
         }
 
+
         .projects-container {
-            max-width: 1100px;
 
-            margin: auto;
+            max-width:
+                1100px;
 
-            display: grid;
+            margin:
+                auto;
+
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(
@@ -861,26 +1053,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     minmax(280px, 1fr)
                 );
 
-            gap: 28px;
+            gap:
+                28px;
         }
 
+
         .project-card {
-            background: white;
 
-            padding: 30px;
+            background:
+                var(--blanc);
 
-            border-radius: 18px;
+            padding:
+                30px;
 
-            box-shadow: var(--shadow);
+            border-radius:
+                15px;
 
             border:
                 1px solid var(--border);
+
+            box-shadow:
+                var(--shadow);
 
             transition:
                 all 0.35s ease;
         }
 
+
         .project-card:hover {
+
             transform:
                 translateY(-8px);
 
@@ -888,18 +1089,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 var(--shadow-hover);
         }
 
+
         .project-card h3 {
-            margin-bottom: 12px;
 
-            color: var(--dark);
+            margin-bottom:
+                12px;
 
-            font-size: 21px;
+            color:
+                var(--bleu-fonce);
+
+            font-size:
+                21px;
         }
 
-        .project-card p {
-            color: var(--text-light);
 
-            margin-bottom: 22px;
+        .project-card p {
+
+            color:
+                var(--gris);
+
+            margin-bottom:
+                22px;
         }
 
 
@@ -908,113 +1118,152 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ===================================================== */
 
         .contact-container {
-            max-width: 700px;
 
-            margin: auto;
+            max-width:
+                700px;
+
+            margin:
+                auto;
         }
+
 
         .contact-form {
-            display: flex;
 
-            flex-direction: column;
+            display:
+                flex;
 
-            gap: 16px;
+            flex-direction:
+                column;
+
+            gap:
+                16px;
         }
+
 
         .contact-form input,
         .contact-form textarea {
-            width: 100%;
 
-            padding: 15px 17px;
+            width:
+                100%;
+
+            padding:
+                15px 17px;
 
             border:
                 1px solid var(--border);
 
-            border-radius: 12px;
+            border-radius:
+                8px;
 
-            font-family: inherit;
+            font-family:
+                inherit;
 
-            font-size: 15px;
+            font-size:
+                15px;
 
-            outline: none;
+            outline:
+                none;
 
-            background: #fafafa;
+            background:
+                var(--gris-clair);
 
             transition:
                 all 0.3s ease;
         }
 
+
         .contact-form input:focus,
         .contact-form textarea:focus {
+
             border-color:
-                var(--primary);
+                var(--bleu);
 
             background:
                 white;
 
             box-shadow:
                 0 0 0 4px
-                rgba(139, 92, 246, 0.08);
+                rgba(37, 99, 235, 0.08);
 
             transform:
                 translateY(-2px);
         }
 
-        .contact-form textarea {
-            min-height: 150px;
 
-            resize: vertical;
+        .contact-form textarea {
+
+            min-height:
+                150px;
+
+            resize:
+                vertical;
         }
 
-        .contact-form button {
-            border: none;
 
-            padding: 14px;
+        .contact-form button {
+
+            border:
+                none;
+
+            padding:
+                14px;
 
             background:
-                var(--gradient);
+                var(--bleu);
 
-            color: white;
+            color:
+                white;
 
-            border-radius: 30px;
+            border-radius:
+                8px;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
-            font-size: 16px;
+            font-size:
+                16px;
 
-            font-weight: 600;
+            font-weight:
+                600;
 
             transition:
                 all 0.3s ease;
-
-            box-shadow:
-                0 8px 20px
-                rgba(139, 92, 246, 0.2);
         }
 
+
         .contact-form button:hover {
+
+            background:
+                var(--bleu-clair);
+
             transform:
                 translateY(-3px);
 
             box-shadow:
-                0 14px 28px
-                rgba(139, 92, 246, 0.3);
+                0 12px 25px
+                rgba(37, 99, 235, 0.2);
         }
 
+
         .success-message {
+
             background:
                 #dcfce7;
 
             color:
                 #166534;
 
-            padding: 15px;
+            padding:
+                15px;
 
-            border-radius: 12px;
+            border-radius:
+                8px;
 
-            margin-bottom: 20px;
+            margin-bottom:
+                20px;
 
-            text-align: center;
+            text-align:
+                center;
 
             border:
                 1px solid #bbf7d0;
@@ -1029,23 +1278,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ===================================================== */
 
         footer {
+
             background:
-                var(--dark);
+                var(--bleu-fonce);
 
             color:
-                #d1d5db;
+                #cbd5e1;
 
             text-align:
                 center;
 
             padding:
                 28px;
-
-            margin-top: 0;
         }
 
+
         footer p {
-            font-size: 14px;
+
+            font-size:
+                14px;
         }
 
 
@@ -1054,80 +1305,106 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ===================================================== */
 
         @keyframes navDown {
+
             from {
-                opacity: 0;
-                transform: translateY(-30px);
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(-30px);
             }
 
             to {
-                opacity: 1;
-                transform: translateY(0);
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
             }
         }
+
 
         @keyframes heroAppear {
+
             from {
-                opacity: 0;
-                transform: translateY(35px);
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(35px);
             }
 
             to {
-                opacity: 1;
-                transform: translateY(0);
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
             }
         }
+
 
         @keyframes fadeUp {
+
             from {
-                opacity: 0;
-                transform: translateY(25px);
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(25px);
             }
 
             to {
-                opacity: 1;
-                transform: translateY(0);
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
             }
         }
+
 
         @keyframes floating {
+
             0%,
             100% {
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
             }
 
             50% {
-                transform: translateY(20px);
+
+                transform:
+                    translateY(20px);
             }
         }
 
-        @keyframes textGlow {
-            0%,
-            100% {
-                filter:
-                    drop-shadow(
-                        0 0 0
-                        rgba(139, 92, 246, 0)
-                    );
-            }
-
-            50% {
-                filter:
-                    drop-shadow(
-                        0 0 12px
-                        rgba(139, 92, 246, 0.2)
-                    );
-            }
-        }
 
         @keyframes success {
+
             from {
-                opacity: 0;
-                transform: scale(0.95);
+
+                opacity:
+                    0;
+
+                transform:
+                    scale(0.95);
             }
 
             to {
-                opacity: 1;
-                transform: scale(1);
+
+                opacity:
+                    1;
+
+                transform:
+                    scale(1);
             }
         }
 
@@ -1139,92 +1416,137 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         @media (max-width: 768px) {
 
             nav {
-                flex-direction: column;
 
-                gap: 15px;
+                flex-direction:
+                    column;
+
+                gap:
+                    15px;
 
                 padding:
                     15px 5%;
             }
 
+
             nav ul {
-                gap: 15px;
 
-                flex-wrap: wrap;
+                gap:
+                    15px;
 
-                justify-content: center;
+                flex-wrap:
+                    wrap;
+
+                justify-content:
+                    center;
             }
+
 
             nav ul li a {
-                font-size: 13px;
+
+                font-size:
+                    13px;
             }
 
+
             .hero {
+
                 padding-top:
                     160px;
             }
 
+
             .hero h1 {
-                font-size: 40px;
+
+                font-size:
+                    40px;
             }
+
 
             .hero h2 {
-                font-size: 23px;
+
+                font-size:
+                    23px;
             }
+
 
             .hero p {
-                font-size: 16px;
+
+                font-size:
+                    16px;
             }
 
+
             section {
+
                 padding:
                     75px 5%;
             }
 
+
             .section-title h2 {
-                font-size: 31px;
+
+                font-size:
+                    31px;
             }
 
+
             .about {
-                padding: 25px;
+
+                padding:
+                    25px;
             }
         }
 
-
-        /* =====================================================
-           PETITS ÉCRANS
-        ===================================================== */
 
         @media (max-width: 480px) {
 
             .hero h1 {
-                font-size: 34px;
+
+                font-size:
+                    34px;
             }
+
 
             .hero h2 {
-                font-size: 20px;
+
+                font-size:
+                    20px;
             }
+
 
             .logo {
-                font-size: 21px;
+
+                font-size:
+                    21px;
             }
+
 
             nav ul {
-                gap: 10px;
+
+                gap:
+                    10px;
             }
 
+
             nav ul li a {
-                font-size: 12px;
+
+                font-size:
+                    12px;
             }
+
 
             .module-card,
             .project-card {
-                padding: 22px;
+
+                padding:
+                    22px;
             }
         }
 
     </style>
+
 </head>
+
 
 <body>
 
@@ -1238,6 +1560,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="logo">
         Hajar Dahbi
     </div>
+
 
     <ul>
 
@@ -1291,22 +1614,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="hero-content">
 
         <h1>
+
             Bonjour, je suis
-            <span>Hajar Dahbi</span>
+
+            <span>
+                Hajar Dahbi
+            </span>
+
         </h1>
+
 
         <h2>
             Développeur Web
         </h2>
 
+
         <p>
+
             Bienvenue sur mon portfolio.
             Découvrez mon parcours, mes compétences,
             mes modules, mes ateliers et mes projets.
+
         </p>
 
+
         <a href="#modules" class="btn">
+
             Découvrir mes modules
+
         </a>
 
     </div>
@@ -1336,15 +1671,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="about">
 
         <p>
+
             Je suis Hajar Dahbi, étudiante en développement web.
             Je m'intéresse à la création de sites web modernes,
             simples et interactifs.
+
         </p>
 
+
         <p>
+
             À travers ma formation, je développe mes compétences
             en développement Front-End, Back-End, bases de données
             et gestion de projets web.
+
         </p>
 
     </div>
@@ -1365,8 +1705,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </h2>
 
         <p>
+
             Retrouvez mes modules et les ateliers réalisés
             pendant ma formation.
+
         </p>
 
     </div>
@@ -1378,17 +1720,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <article class="module-card">
 
+
                 <div class="module-code">
 
                     <?= htmlspecialchars($module["code"]) ?>
 
                 </div>
 
+
                 <h3>
 
                     <?= htmlspecialchars($module["title"]) ?>
 
                 </h3>
+
 
                 <p>
 
@@ -1402,7 +1747,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="ateliers">
 
                         <h4>
-                            📚 Ateliers
+                            Ateliers
                         </h4>
 
 
@@ -1414,7 +1759,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 class="atelier-btn"
                             >
 
-                                📄
                                 <?= htmlspecialchars($atelier["title"]) ?>
 
                             </a>
@@ -1424,6 +1768,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
 
                 <?php endif; ?>
+
 
             </article>
 
@@ -1513,6 +1858,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <div class="projects-container">
 
+
         <article class="project-card">
 
             <h3>
@@ -1520,9 +1866,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </h3>
 
             <p>
+
                 Création d'un portfolio personnel avec HTML,
                 CSS et PHP pour présenter mon parcours,
                 mes compétences et mes travaux.
+
             </p>
 
             <a href="#contact" class="btn">
@@ -1539,8 +1887,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </h3>
 
             <p>
+
                 Conception et développement d'un projet web
                 dans le cadre de ma formation.
+
             </p>
 
             <a href="#contact" class="btn">
@@ -1557,8 +1907,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </h3>
 
             <p>
+
                 Création et gestion d'une base de données
                 avec SQL et MySQL.
+
             </p>
 
             <a href="#contact" class="btn">
@@ -1566,6 +1918,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </a>
 
         </article>
+
 
     </div>
 
@@ -1593,6 +1946,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <div class="contact-container">
 
+
         <?php if ($message_envoye): ?>
 
             <div class="success-message">
@@ -1617,6 +1971,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 required
             >
 
+
             <input
                 type="email"
                 name="email"
@@ -1624,14 +1979,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 required
             >
 
+
             <textarea
                 name="message"
                 placeholder="Votre message"
                 required
             ></textarea>
 
+
             <button type="submit">
+
                 Envoyer le message
+
             </button>
 
         </form>
@@ -1655,6 +2014,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </p>
 
 </footer>
+
 
 </body>
 
