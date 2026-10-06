@@ -24,6 +24,7 @@ $modules = [
             ]
         ]
     ],
+
     [
         "code" => "M202",
         "title" => "Approche agile",
@@ -39,6 +40,7 @@ $modules = [
             ]
         ]
     ],
+
     [
         "code" => "M203",
         "title" => "Gestion des donnees",
@@ -54,6 +56,7 @@ $modules = [
             ]
         ]
     ],
+
     [
         "code" => "M204",
         "title" => "Développement Front-End",
@@ -65,6 +68,7 @@ $modules = [
             ]
         ]
     ],
+
     [
         "code" => "M205",
         "title" => "Développement Back-End",
@@ -76,6 +80,7 @@ $modules = [
             ]
         ]
     ],
+
     [
         "code" => "M206",
         "title" => "Création d’une application Cloud native",
@@ -87,6 +92,7 @@ $modules = [
             ]
         ]
     ],
+
     [
         "code" => "M207",
         "title" => "Projet de synthèse",
@@ -98,6 +104,7 @@ $modules = [
             ]
         ]
     ],
+
     [
         "code" => "M208",
         "title" => "Communication professionnelle",
@@ -158,34 +165,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         :root {
 
-            --rose-fonce: #9f1239;
-            --rose: #d9466f;
-            --rose-clair: #fdf2f5;
-            --rose-pale: #fff7f9;
-            --rose-hover: #be365d;
+            --rose-principal: #e8a0b5;
 
-            --gris-fonce: #1f2937;
-            --gris: #6b7280;
-            --gris-clair: #f8fafc;
+            --rose-clair: #fff5f8;
+
+            --rose-pale: #fff9fb;
+
+            --rose-poudre: #f9dce5;
+
+            --rose-accent: #d98fa6;
+
+            --rose-fonce: #b96f88;
+
+            --rose-footer: #c77d96;
+
+            --texte: #5a4650;
+
+            --texte-clair: #8b747d;
 
             --blanc: #ffffff;
 
-            --border: #f1d5dd;
+            --border: #f1d5df;
 
             --gradient:
                 linear-gradient(
                     135deg,
-                    #9f1239,
-                    #d9466f
+                    #e8a0b5,
+                    #d98fa6
                 );
 
             --shadow:
-                0 10px 30px
-                rgba(159, 18, 57, 0.08);
+                0 8px 25px
+                rgba(201, 126, 150, 0.10);
 
             --shadow-hover:
-                0 20px 40px
-                rgba(217, 70, 111, 0.18);
+                0 15px 35px
+                rgba(201, 126, 150, 0.18);
         }
 
 
@@ -196,6 +211,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         * {
 
             margin: 0;
+
             padding: 0;
 
             box-sizing: border-box;
@@ -220,7 +236,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 var(--blanc);
 
             color:
-                var(--gris-fonce);
+                var(--texte);
 
             line-height:
                 1.7;
@@ -231,7 +247,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         /* =====================================================
-           NAVIGATION
+           NAVBAR
         ===================================================== */
 
         nav {
@@ -239,6 +255,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             position: fixed;
 
             top: 0;
+
             left: 0;
 
             width: 100%;
@@ -252,10 +269,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 center;
 
             padding:
-                18px 8%;
+                17px 8%;
 
             background:
-                rgba(255, 255, 255, 0.95);
+                rgba(255, 255, 255, 0.94);
 
             backdrop-filter:
                 blur(15px);
@@ -265,7 +282,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             box-shadow:
                 0 4px 20px
-                rgba(159, 18, 57, 0.04);
+                rgba(201, 126, 150, 0.06);
 
             z-index:
                 1000;
@@ -284,7 +301,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 800;
 
             color:
-                var(--rose);
+                var(--rose-accent);
+
+            letter-spacing:
+                0.5px;
         }
 
 
@@ -307,7 +327,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 none;
 
             color:
-                var(--gris-fonce);
+                var(--texte);
 
             font-size:
                 15px;
@@ -317,6 +337,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             position:
                 relative;
+
+            transition:
+                color 0.3s ease;
         }
 
 
@@ -329,7 +352,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 absolute;
 
             left:
-                0;
+                50%;
 
             bottom:
                 -7px;
@@ -341,17 +364,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 2px;
 
             background:
-                var(--rose);
+                var(--rose-principal);
+
+            border-radius:
+                10px;
 
             transition:
-                width 0.3s ease;
+                all 0.3s ease;
+
+            transform:
+                translateX(-50%);
         }
 
 
         nav ul li a:hover {
 
             color:
-                var(--rose);
+                var(--rose-accent);
         }
 
 
@@ -395,9 +424,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             background:
                 linear-gradient(
                     135deg,
-                    #fff5f7,
+                    #fff7fa,
                     #ffffff,
-                    #fdf2f5
+                    #fff1f5
                 );
         }
 
@@ -411,25 +440,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 absolute;
 
             width:
-                420px;
+                430px;
 
             height:
-                420px;
+                430px;
 
             border-radius:
                 50%;
 
             background:
-                rgba(217, 70, 111, 0.08);
+                rgba(232, 160, 181, 0.16);
 
             top:
-                -170px;
+                -180px;
 
             right:
                 -100px;
 
             animation:
-                floating 6s ease-in-out infinite;
+                floating 7s ease-in-out infinite;
         }
 
 
@@ -442,25 +471,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 absolute;
 
             width:
-                300px;
+                320px;
 
             height:
-                300px;
+                320px;
 
             border-radius:
                 50%;
 
             background:
-                rgba(159, 18, 57, 0.05);
+                rgba(249, 220, 229, 0.65);
 
             bottom:
-                -120px;
+                -160px;
 
             left:
                 -100px;
 
             animation:
-                floating 7s ease-in-out infinite reverse;
+                floating 8s ease-in-out infinite reverse;
         }
 
 
@@ -492,7 +521,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 22px;
 
             color:
-                var(--gris-fonce);
+                var(--texte);
 
             font-weight:
                 800;
@@ -502,10 +531,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .hero h1 span {
 
             color:
-                var(--rose);
+                var(--rose-accent);
 
             display:
                 inline-block;
+
+            animation:
+                softPulse 3s ease-in-out infinite;
         }
 
 
@@ -531,7 +563,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 18px;
 
             color:
-                var(--gris);
+                var(--texte-clair);
 
             max-width:
                 700px;
@@ -551,7 +583,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 inline-block;
 
             padding:
-                13px 28px;
+                13px 29px;
 
             background:
                 var(--gradient);
@@ -563,14 +595,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 none;
 
             border-radius:
-                8px;
+                30px;
 
             font-weight:
                 600;
 
             box-shadow:
                 0 8px 20px
-                rgba(217, 70, 111, 0.22);
+                rgba(217, 143, 166, 0.25);
 
             transition:
                 all 0.3s ease;
@@ -580,14 +612,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .btn:hover {
 
             background:
-                var(--rose-hover);
+                linear-gradient(
+                    135deg,
+                    #d98fa6,
+                    #c77d96
+                );
 
             transform:
                 translateY(-4px);
 
             box-shadow:
-                0 14px 28px
-                rgba(217, 70, 111, 0.25);
+                0 13px 25px
+                rgba(201, 126, 150, 0.28);
         }
 
 
@@ -627,7 +663,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 10px;
 
             color:
-                var(--gris-fonce);
+                var(--texte);
 
             font-weight:
                 800;
@@ -655,14 +691,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 10px;
 
             background:
-                var(--rose);
+                var(--rose-principal);
         }
 
 
         .section-title p {
 
             color:
-                var(--gris);
+                var(--texte-clair);
 
             margin-top:
                 12px;
@@ -670,7 +706,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         /* =====================================================
-           À PROPOS
+           ABOUT
         ===================================================== */
 
         .about {
@@ -685,13 +721,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 center;
 
             background:
-                var(--blanc);
+                var(--white);
 
             padding:
-                35px;
+                38px;
 
             border-radius:
-                15px;
+                20px;
 
             border:
                 1px solid var(--border);
@@ -713,7 +749,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 15px;
 
             color:
-                var(--gris);
+                var(--texte-clair);
         }
 
 
@@ -724,7 +760,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .modules {
 
             background:
-                var(--rose-pale);
+                var(--rose-clair);
         }
 
 
@@ -759,7 +795,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 28px;
 
             border-radius:
-                15px;
+                20px;
 
             border:
                 1px solid var(--border);
@@ -805,7 +841,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 scaleX(0);
 
             transform-origin:
-                left;
+                center;
 
             transition:
                 transform 0.35s ease;
@@ -835,16 +871,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 inline-block;
 
             background:
-                var(--rose-clair);
+                var(--rose-poudre);
 
             color:
                 var(--rose-fonce);
 
             padding:
-                6px 13px;
+                6px 14px;
 
             border-radius:
-                6px;
+                20px;
 
             font-size:
                 13px;
@@ -866,14 +902,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 21px;
 
             color:
-                var(--gris-fonce);
+                var(--texte);
         }
 
 
         .module-card p {
 
             color:
-                var(--gris);
+                var(--texte-clair);
         }
 
 
@@ -919,16 +955,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 11px 14px;
 
             background:
-                var(--gris-clair);
+                var(--rose-pale);
 
             color:
-                var(--gris-fonce);
+                var(--texte);
 
             text-decoration:
                 none;
 
             border-radius:
-                8px;
+                12px;
 
             border:
                 1px solid transparent;
@@ -941,13 +977,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .atelier-btn:hover {
 
             background:
-                var(--rose-clair);
+                var(--rose-poudre);
 
             color:
                 var(--rose-fonce);
 
             border-color:
-                #f3b8c7;
+                #edc1ce;
 
             transform:
                 translateX(5px);
@@ -983,13 +1019,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .skill {
 
             background:
-                var(--gris-clair);
+                var(--rose-pale);
 
             padding:
                 25px;
 
             border-radius:
-                12px;
+                18px;
 
             text-align:
                 center;
@@ -998,7 +1034,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 700;
 
             color:
-                var(--gris-fonce);
+                var(--texte);
 
             border:
                 1px solid var(--border);
@@ -1008,10 +1044,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
 
+        .skill:nth-child(even) {
+
+            background:
+                var(--rose-poudre);
+        }
+
+
         .skill:hover {
 
             background:
-                var(--rose);
+                var(--rose-principal);
 
             color:
                 white;
@@ -1021,7 +1064,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             box-shadow:
                 0 12px 25px
-                rgba(217, 70, 111, 0.2);
+                rgba(217, 143, 166, 0.22);
         }
 
 
@@ -1032,7 +1075,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .projects {
 
             background:
-                var(--rose-pale);
+                var(--rose-clair);
         }
 
 
@@ -1067,7 +1110,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 30px;
 
             border-radius:
-                15px;
+                20px;
 
             border:
                 1px solid var(--border);
@@ -1096,7 +1139,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 12px;
 
             color:
-                var(--gris-fonce);
+                var(--texte);
 
             font-size:
                 21px;
@@ -1106,7 +1149,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .project-card p {
 
             color:
-                var(--gris);
+                var(--texte-clair);
 
             margin-bottom:
                 22px;
@@ -1153,7 +1196,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 1px solid var(--border);
 
             border-radius:
-                8px;
+                12px;
 
             font-family:
                 inherit;
@@ -1165,7 +1208,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 none;
 
             background:
-                var(--gris-clair);
+                var(--rose-pale);
+
+            color:
+                var(--texte);
 
             transition:
                 all 0.3s ease;
@@ -1176,14 +1222,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .contact-form textarea:focus {
 
             border-color:
-                var(--rose);
+                var(--rose-principal);
 
             background:
                 white;
 
             box-shadow:
                 0 0 0 4px
-                rgba(217, 70, 111, 0.08);
+                rgba(232, 160, 181, 0.12);
 
             transform:
                 translateY(-2px);
@@ -1215,7 +1261,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 white;
 
             border-radius:
-                8px;
+                30px;
 
             cursor:
                 pointer;
@@ -1234,30 +1280,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         .contact-form button:hover {
 
             background:
-                var(--rose-hover);
+                linear-gradient(
+                    135deg,
+                    #d98fa6,
+                    #c77d96
+                );
 
             transform:
                 translateY(-3px);
 
             box-shadow:
                 0 12px 25px
-                rgba(217, 70, 111, 0.2);
+                rgba(201, 126, 150, 0.2);
         }
 
 
         .success-message {
 
             background:
-                #dcfce7;
+                #f0fdf4;
 
             color:
-                #166534;
+                #4d7c5a;
 
             padding:
                 15px;
 
             border-radius:
-                8px;
+                12px;
 
             margin-bottom:
                 20px;
@@ -1266,7 +1316,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 center;
 
             border:
-                1px solid #bbf7d0;
+                1px solid #ccebd4;
 
             animation:
                 success 0.5s ease;
@@ -1280,17 +1330,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         footer {
 
             background:
-                var(--rose-fonce);
+                var(--rose-footer);
 
             color:
-                #fce7ef;
+                #fff5f8;
 
             text-align:
                 center;
 
             padding:
-                35px 20px;
-
+                38px 20px;
         }
 
 
@@ -1310,10 +1359,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 white;
 
             font-size:
-                22px;
+                23px;
 
             margin-bottom:
                 15px;
+
+            font-weight:
+                700;
         }
 
 
@@ -1357,13 +1409,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             font-weight:
                 600;
 
+            transition:
+                color 0.3s ease;
         }
 
 
         .footer-info a:hover {
 
             color:
-                #f9a8c0;
+                #ffe5ed;
         }
 
 
@@ -1376,7 +1430,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 2px;
 
             background:
-                #f9a8c0;
+                #fbd2de;
 
             margin:
                 15px auto;
@@ -1389,8 +1443,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 13px;
 
             color:
-                #fbcfe0;
-
+                #ffe7ee;
         }
 
 
@@ -1477,6 +1530,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 transform:
                     translateY(20px);
+            }
+        }
+
+
+        @keyframes softPulse {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(1);
+            }
+
+            50% {
+
+                transform:
+                    scale(1.02);
             }
         }
 
