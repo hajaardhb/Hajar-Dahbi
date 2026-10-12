@@ -38,8 +38,8 @@ $modules = [
                 "file" => "docs/Atelier 1 gestion de projet methodes classiques.pdf"
             ],
             [
-                "title" => "Atelier 2",
-                "file" => "pdf/M202/atelier2.pdf"
+                "title" => "Atelier 2 - Gestion de projet Agile",
+                "file" => "docs/Agile et Scrum.pdf"
             ]
         ]
     ],
@@ -2031,7 +2031,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             </p>
 
-            <a href="docs/home.php" class="btn">
+            <a href="docs/website project/home.php" class="btn">
                 Voir le projet
             </a>
 
