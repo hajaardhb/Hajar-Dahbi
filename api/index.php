@@ -39,7 +39,7 @@ $modules = [
             ],
             [
                 "title" => "Atelier 2 - Gestion de projet Agile",
-                "file" => "docs/Agile et Scrum.pdf"
+                "file" => "docs/scrum.pdf"
             ]
         ]
     ],
