@@ -42,8 +42,8 @@ $modules = [
                 "file" => "docs/scrum.pdf"
             ],
             [
-                "title" => "Atelier 3",
-                "file" => "docs/atelier3.pdf"
+                "title" => "Atelier 4 - GitHub : travail collaboratif",
+                "file" => "https://atelier-eta-blond.vercel.app"
             ]
         ]
     ],
