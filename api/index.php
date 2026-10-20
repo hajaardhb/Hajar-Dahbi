@@ -2055,7 +2055,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             </p>
 
-            <a href="https://qribma.vercel.app" class="btn">
+            <a href="https://qribma.vercel.app" target="_blank" class="btn">
                 Voir le projet
             </a>
 
