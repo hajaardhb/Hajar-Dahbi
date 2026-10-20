@@ -2045,7 +2045,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <article class="project-card">
 
             <h3>
-                Projet Web
+                Projet Web : Qrib
             </h3>
 
             <p>
@@ -2055,7 +2055,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             </p>
 
-            <a href="#contact" class="btn">
+            <a href="https://qribma.vercel.app" class="btn">
                 Voir le projet
             </a>
 
