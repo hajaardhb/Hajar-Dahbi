@@ -44,6 +44,10 @@ $modules = [
             [
                 "title" => "Atelier 4 - GitHub : travail collaboratif",
                 "file" => "https://atelier-eta-blond.vercel.app"
+            ],
+            [
+                "title" => "Atelier 5 - Examen fin de module",
+                "file" => "docs/efm.pdf"
             ]
         ]
     ],
