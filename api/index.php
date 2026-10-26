@@ -48,6 +48,10 @@ $modules = [
             [
                 "title" => "Atelier 5 - Examen fin de module",
                 "file" => "docs/efm.pdf"
+            ],
+            [
+                "title" => "Atelier 6 - GitHub : PHP, MySQL Aiven, Cloudinary et Vercel",
+                "file" => "https://atelier-stagiaire6.vercel.app"
             ]
         ]
     ],
