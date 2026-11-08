@@ -52,6 +52,10 @@ $modules = [
             [
                 "title" => "Atelier 6 - GitHub : PHP, MySQL Aiven, Cloudinary et Vercel",
                 "file" => "https://atelier-stagiaire6.vercel.app"
+            ],
+            [
+                "title" => "Atelier 7 - GitLab CI/CD + SonarQube Cloud",
+                "file" => "docs/atelierr7.pdf"
             ]
         ]
     ],
