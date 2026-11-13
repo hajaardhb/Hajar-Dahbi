@@ -66,8 +66,9 @@ $modules = [
         "description" => "Conception, organisation et manipulation des bases de données.",
         "ateliers" => [
             [
-                "title" => "Atelier 1",
-                "file" => "pdf/M202/atelier1.pdf"
+                "title" => "Atelier 1 - SQL Complet – Requêtes, Calculs, Optimisation
+                et Sécurité",
+                "file" => "docs/at1mysql.pdf"
             ],
             [
                 "title" => "Atelier 2",
