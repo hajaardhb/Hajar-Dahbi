@@ -81,6 +81,10 @@ $modules = [
             [
                 "title" => "Atelier 5 - gestion des dossiers fonciers",
                 "file" => "docs/at5.pdf"
+            ],
+            [
+                "title" => "Atelier 6 - Les Triggers (Déclencheurs) en MySQL",
+                "file" => "docs/at6.pdf"
             ]
         ]
     ],
