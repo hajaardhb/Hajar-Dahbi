@@ -71,8 +71,16 @@ $modules = [
                 "file" => "docs/at1mysql.pdf"
             ],
             [
-                "title" => "Atelier 2",
-                "file" => "pdf/M202/atelier2.pdf"
+                "title" => "Atelier 3 - Gestion d’un Centre de Formation avec Procédures et Fonctions Stockées",
+                "file" => "docs/at3.pdf"
+            ],
+            [
+                "title" => "Atelier 4 - Les Curseurs en MySQL",
+                "file" => "docs/at4.pdf"
+            ],
+            [
+                "title" => "Atelier 5 - gestion des dossiers fonciers",
+                "file" => "docs/at5.pdf"
             ]
         ]
     ],
