@@ -85,6 +85,10 @@ $modules = [
             [
                 "title" => "Atelier 6 - Les Triggers (Déclencheurs) en MySQL",
                 "file" => "docs/at6.pdf"
+            ],
+            [
+                "title" => "Atelier 7 - Programmation avancée en SQL – Procédures, Fonctions et Triggers (MySQL)",
+                "file" => "docs/at7sql.pdf"
             ]
         ]
     ],
