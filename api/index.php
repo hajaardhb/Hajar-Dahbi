@@ -89,6 +89,10 @@ $modules = [
             [
                 "title" => "Atelier 7 - Programmation avancée en SQL – Procédures, Fonctions et Triggers (MySQL)",
                 "file" => "docs/at7sql.pdf"
+            ],
+            [
+                "title" => "Examen fin de session Juin 2026",
+                "file" => "docs/examenff.pdf"
             ]
         ]
     ],
