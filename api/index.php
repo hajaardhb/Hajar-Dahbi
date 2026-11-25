@@ -93,6 +93,10 @@ $modules = [
             [
                 "title" => "Examen fin de session Juin 2026",
                 "file" => "docs/examenff.pdf"
+            ],
+            [
+                "title" => "Axe 3 — NoSQL (MongoDB) - Atelier 1",
+                "file" => "docs/mongodb.pdf"
             ]
         ]
     ],
