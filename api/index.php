@@ -101,6 +101,10 @@ $modules = [
             [
                 "title" => "Axe 3 — NoSQL (MongoDB : Mise à jour, suppression et Upsert) - Atelier 2",
                 "file" => "docs/mongodb2.pdf"
+            ],
+            [
+                "title" => "Axe 3 — NoSQL (MongoDB — Manipulation des tableaux (Arrays)) - Atelier 3",
+                "file" => "docs/mongodb3.pdf"
             ]
         ]
     ],
